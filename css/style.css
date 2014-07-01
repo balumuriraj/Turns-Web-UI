@@ -18,6 +18,7 @@ body {
     font-size: 1em;
     font-family: 'Open Sans';
     background: #eee;
+    overflow-x: hidden;
 }
 
 .wrap {
