@@ -7,7 +7,7 @@ app.config(function ($routeProvider) {
         .when('/dashboard',
             {
                 controller: 'dashboard-Controller',
-                templateUrl: '/js/partials/dashboard.html'
+                templateUrl: 'js/partials/dashboard.html'
             })
         .otherwise({ redirectTo: '/dashboard' });
 });
