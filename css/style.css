@@ -1,0 +1,52 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+@font-face {
+    font-family: 'Nevis';
+    src: url('../fonts/nevis.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'nexabold';
+    src: url('../fonts/Nexa Bold.otf') format('truetype');
+}
+@font-face {
+    font-family: 'nexalight';
+    src: url('../fonts/Nexa Light.otf') format('truetype');
+}
+
+body {
+    color: #555;
+    font-size: 1em;
+    font-family: 'Open Sans';
+    background: #fff;
+}
+
+.headbar {
+    background: #333;
+    color: #fff;
+    border-radius: 0;
+}
+
+.headbar-topline{
+    height: 0.4em;
+    background: #47a3da;   
+}
+
+.headbar-header{
+    color: #fff;
+    padding: 1em;
+}
+
+.headbar-logo{
+    text-decoration: none;
+    color: #eee;
+    font-size: 2em;
+}
+
+.headbar-account{
+    float: right;
+    text-decoration: none;
+    color: #eee;
+    font-size: 1.25em;
+    background: #555;
+    padding: 0.5em;
+}
