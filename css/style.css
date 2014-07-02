@@ -159,6 +159,15 @@ body {
     color: #fff;
 }
 
+.dashboard-message{
+    font-size: 3em;
+    text-align: center;
+}
+
+.dashboard-message span{
+    font-size: 1.5em;
+}
+
 .turn-left, .turn-middle, .turn-right{
     font-size: 1.25em;
     padding: 0.5em;
@@ -194,7 +203,7 @@ body {
 }
 
 .turn-summary{
-    padding: 1.5em 1.75em;
+    padding: 1.25em 1.5em;
     font-size: 1.75em;
 }
 

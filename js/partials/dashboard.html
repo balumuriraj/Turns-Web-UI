@@ -5,10 +5,10 @@
             <div class="col-md-3">
                 <nav class="side-menu">
                     <ul>
-                        <li><a href="#"><span class="icon-box"></span> Dashboard</a>
+                        <li><a href=""><span class="icon-box"></span> Dashboard</a>
                         </li>
-                        <li><a href="#"><span class="icon-tags"></span> Groups <span class="icon-angle-right" style="float: right;"></span></a>
-                            <ul>
+                        <li><a href="" onclick="togglegroups()"><span class="icon-tags"></span> Groups <span class="icon-angle-right" style="float: right;"></span></a>
+                            <ul id="groups">
                                 <li><a href="#"><span class="icon-tag"></span> Roomies</a>
                                 </li>
                                 <li><a href="#"><span class="icon-tag"></span> Buddies</a>
@@ -18,8 +18,8 @@
                             </ul>
 
                         </li>
-                        <li><a href="#"><span class="icon-users"></span> Friends <span class="icon-angle-right" style="float: right;"></span></a>
-                            <ul>
+                        <li><a href="" onclick="togglefriends()"><span class="icon-users"></span> Friends <span class="icon-angle-right" style="float: right;"></span></a>
+                            <ul id="friends">
                                 <li><a href="#"><span class="icon-user2"></span> Robin Van Persie</a>
                                 </li>
                                 <li><a href="#"><span class="icon-user2"></span> Shinjin Kagawa</a>
@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <h1>Your next turn is in 2 days</h1>
+                            <p class="dashboard-message">Your next turn is in <span>2</span> days</p>
                         </div>
                     </div>
                 </div>
@@ -133,3 +133,16 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#groups').hide();
+    $('#friends').hide();
+    
+    function togglegroups(){
+        $('#groups').toggle();   
+    }
+    
+    function togglefriends(){
+        $('#friends').toggle();   
+    }
+</script>
