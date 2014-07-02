@@ -98,6 +98,9 @@ body {
     color: #555;
 }
 
+.menu-active{
+    border-left: 5px solid rgba(0, 0, 0, .3)
+}
 
 .side-menu ul li ul {
     background: rgba(0, 0, 0, .1);
@@ -109,7 +112,7 @@ body {
 
 .side-menu ul li ul li a{
     font-size: 1.25em;
-    padding-left: 4em;
+    padding-left: 3em;
     letter-spacing: 0px;
 }
 
@@ -162,10 +165,13 @@ body {
 .dashboard-message{
     font-size: 3em;
     text-align: center;
+    color: #999;
+    margin: 0;
 }
 
 .dashboard-message span{
     font-size: 1.5em;
+    color: #555;
 }
 
 .turn-left, .turn-middle, .turn-right{
@@ -180,17 +186,17 @@ body {
     border-right: 1px solid #ddd;   
 }
 
-.turn-left strong{
+.turn-left span{
     font-size: 4em;  
     color: #fbc73b;
 }
 
-.turn-middle strong{
+.turn-middle span{
     font-size: 4em;  
     color: #7ea568;
 }
 
-.turn-right strong{
+.turn-right span{
     font-size: 4em; 
     color: #f06060;
 }

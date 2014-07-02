@@ -5,15 +5,15 @@
             <div class="col-md-3">
                 <nav class="side-menu">
                     <ul>
-                        <li><a href=""><span class="icon-box"></span> Dashboard</a>
+                        <li><a href="" class="menu-active"><span class="icon-box"></span> Dashboard</a>
                         </li>
-                        <li><a href="" onclick="togglegroups()"><span class="icon-tags"></span> Groups <span class="icon-angle-right" style="float: right;"></span></a>
-                            <ul id="groups">
+                        <li><a href="" onclick="toggleactivities()"><span class="icon-tags"></span> Activities <span class="icon-angle-right" style="float: right;"></span></a>
+                            <ul id="activities">
                                 <li><a href="#"><span class="icon-tag"></span> Roomies</a>
                                 </li>
                                 <li><a href="#"><span class="icon-tag"></span> Buddies</a>
                                 </li>
-                                <li><a href="#"><span class="icon-plus"></span> Add Group</a>
+                                <li><a href="#"><span class="icon-plus"></span> Add Activity</a>
                                 </li>
                             </ul>
 
@@ -43,21 +43,21 @@
                                     <div class="col-md-4">
                                         <div class="turn-left">
                                             <p>Turns completed</p>
-                                            <p><strong>25</strong>
+                                            <p><span>25</span>
                                             </p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="turn-middle">
                                             <p>Turns in advance</p>
-                                            <p><strong>3</strong>
+                                            <p><span>3</span>
                                             </p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="turn-right">
                                             <p>Turns remaining</p>
-                                            <p><strong>7</strong>
+                                            <p><span>7</span>
                                             </p>
                                         </div>
                                     </div>
@@ -95,34 +95,11 @@
             <div class="col-md-3">
                 <nav class="side-menu settings">
                     <ul>
-                        <li><a href="#"><span class="icon-cogs"></span> Settings <span class="icon-angle-right" style="float: right;"></span></a>
-                            <ul>
-                                <li><a href="#"><span class="icon-tag"></span> Roomies</a>
-                                </li>
-                                <li><a href="#"><span class="icon-tag"></span> Buddies</a>
-                                </li>
-                                <li><a href="#"><span class="icon-plus"></span> Add Group</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><span class="icon-tags"></span> Groups <span class="icon-angle-right" style="float: right;"></span></a>
-                            <ul>
-                                <li><a href="#"><span class="icon-tag"></span> Roomies</a>
-                                </li>
-                                <li><a href="#"><span class="icon-tag"></span> Buddies</a>
-                                </li>
-                                <li><a href="#"><span class="icon-plus"></span> Add Group</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li><a href="#"><span class="icon-users"></span> Friends <span class="icon-angle-right" style="float: right;"></span></a>
-                            <ul>
-                                <li><a href="#"><span class="icon-user2"></span> Robin Van Persie</a>
-                                </li>
-                                <li><a href="#"><span class="icon-user2"></span> Shinjin Kagawa</a>
-                                </li>
-                                <li><a href="#"><span class="icon-plus"></span> Add Friend</a>
+                        <li><a href="" onclick="togglesettings()"><span class="icon-cogs"></span> Settings <span class="icon-angle-right" style="float: right;"></span></a>
+                            <ul id="settings">                                
+                                <li><a href=""><span class="icon-user2"></span> Account</a>
+                                </li>                                
+                                <li><a href=""><span class="icon-cog2"></span> Notifications</a>
                                 </li>
                             </ul>
                         </li>
@@ -135,14 +112,19 @@
 </div>
 
 <script type="text/javascript">
-    $('#groups').hide();
+    $('#activities').hide();
     $('#friends').hide();
+    $('#settings').hide();
     
-    function togglegroups(){
-        $('#groups').toggle();   
+    function toggleactivities(){
+        $('#activities').toggle();   
     }
     
     function togglefriends(){
         $('#friends').toggle();   
+    }
+    
+    function togglesettings(){
+        $('#settings').toggle();   
     }
 </script>
