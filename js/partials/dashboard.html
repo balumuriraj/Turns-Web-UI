@@ -9,9 +9,7 @@
                         </li>
                         <li><a href="" onclick="toggleactivities()"><span class="icon-tags"></span> Activities <span class="icon-angle-right" style="float: right;"></span></a>
                             <ul id="activities">
-                                <li><a href="#"><span class="icon-tag"></span> Roomies</a>
-                                </li>
-                                <li><a href="#"><span class="icon-tag"></span> Buddies</a>
+                                <li ng-repeat="activity in activities"><a href="#"><span class="icon-tag"></span> {{activity}}</a>
                                 </li>
                                 <li><a href="#"><span class="icon-plus"></span> Add Activity</a>
                                 </li>
@@ -20,14 +18,11 @@
                         </li>
                         <li><a href="" onclick="togglefriends()"><span class="icon-users"></span> Friends <span class="icon-angle-right" style="float: right;"></span></a>
                             <ul id="friends">
-                                <li><a href="#"><span class="icon-user2"></span> Robin Van Persie</a>
-                                </li>
-                                <li><a href="#"><span class="icon-user2"></span> Shinjin Kagawa</a>
-                                </li>
-                                <li><a href="#"><span class="icon-plus"></span> Add Friend</a>
-                                </li>
+                                <li ng-repeat="friend in friends"><a href="#"><span class="icon-user2"></span> {{friend}}</a>
+                                    <li><a href="#"><span class="icon-plus"></span> Add Friend</a>
+                                    </li>
                             </ul>
-                        </li>
+                            </li>
                     </ul>
                 </nav>
             </div>
@@ -69,36 +64,40 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="turn-petti">
-                            <div class="turn-summary">
-                                <div class="turn-date">
-                                    <p>JUN 30</p>
+                <div ng-repeat="feed in feeds.results">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="turn-petti">
+                                <div class="turn-summary">
+                                    <div class="turn-date">
+                                        <p>{{feed.date | date: 'dd'}}</p>
+                                        <p><span>{{feed.date | date: 'MMM'}}</span> <br> {{feed.date | date: 'yyyy'}}</p>                                        
+                                    </div>
+                                    <div class="turn-title">
+                                        <p>{{feed.name}}'s turn</p>
+                                    </div>
+                                    <div class="turn-action">
+                                        <p><span class="icon-cog"></span>
+                                        </p>
+                                    </div>
+                                    <div class="turn-status">
+                                        <p><span class="icon-thumbs-up"></span>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="turn-title">
-                                    <p>Rooney's turn</p>
-                                </div>
-                                <div class="turn-action">
-                                    <p><span class="icon-cog"></span>
-                                    </p>
-                                </div>
-                                <div class="turn-status">
-                                    <p><span class="icon-thumbs-up"></span></p>
-                                </div>                                
                             </div>
                         </div>
                     </div>
+                    <br>
                 </div>
-                <br>
             </div>
             <div class="col-md-3">
                 <nav class="side-menu settings">
                     <ul>
                         <li><a href="" onclick="togglesettings()"><span class="icon-cogs"></span> Settings <span class="icon-angle-right" style="float: right;"></span></a>
-                            <ul id="settings">                                
+                            <ul id="settings">
                                 <li><a href=""><span class="icon-user2"></span> Account</a>
-                                </li>                                
+                                </li>
                                 <li><a href=""><span class="icon-cog2"></span> Notifications</a>
                                 </li>
                             </ul>
@@ -115,16 +114,16 @@
     $('#activities').hide();
     $('#friends').hide();
     $('#settings').hide();
-    
-    function toggleactivities(){
-        $('#activities').toggle();   
+
+    function toggleactivities() {
+        $('#activities').toggle();
     }
-    
-    function togglefriends(){
-        $('#friends').toggle();   
+
+    function togglefriends() {
+        $('#friends').toggle();
     }
-    
-    function togglesettings(){
-        $('#settings').toggle();   
+
+    function togglesettings() {
+        $('#settings').toggle();
     }
 </script>

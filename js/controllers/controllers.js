@@ -2,13 +2,55 @@
 //The $scope is ultimately bound to the multimedia view
 app.controller('dashboard-Controller', [ '$scope', function ($scope) {
 
-    $scope.item;
+    $scope.activities = ['Roomies', 'Dinner', 'Lunch', 'Washing'];
+    $scope.friends = ['Robin Van Persie', 'Shinjin Kagawa', 'Juan Mata', 'Ander Herera'];
+    $scope.feeds = { 'results': [
+        {
+            'date': new Date(),
+            'name': 'Rooney',
+            'status': 'done'
+        },
+        {
+            'date': new Date(),
+            'name': 'Robin Van Persie',
+            'status': 'done'
+        },
+        {
+            'date': new Date(),
+            'name': 'Shinjin Kagawa',
+            'status': 'done'
+        },
+        {
+            'date': new Date(),
+            'name': 'Rooney',
+            'status': 'done'
+        },
+        {
+            'date': new Date(),
+            'name': 'Robin Van Persie',
+            'status': 'done'
+        },
+        {
+            'date': new Date(),
+            'name': 'Juan Mata',
+            'status': 'done'
+        },
+        {
+            'date': new Date(),
+            'name': 'Ander Herera',
+            'status': 'done'
+        },
+        {
+            'date': new Date(),
+            'name': 'Juan Mata',
+            'status': 'done'
+        }
+    ]}
     $scope.status;
 
     init();
 
     function init(){
-        $scope.item = "Hello World";
         $scope.status = 200;
     }
 
