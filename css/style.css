@@ -21,6 +21,21 @@ body {
     overflow-x: hidden;
 }
 
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
 .wrap {
     width: 98%;
     margin: 0 auto;
@@ -31,6 +46,9 @@ body {
     background: #333;
     color: #fff;
     border-radius: 0;
+    -webkit-box-shadow: 0 4px 6px -6px black;
+    -moz-box-shadow: 0 4px 6px -6px black;
+    box-shadow: 0 4px 6px -6px black;
 }
 
 .headbar-topline{
@@ -211,18 +229,29 @@ body {
 
 .turn-summary{
     padding: 1.25em 1.5em;
-    font-size: 1.5em;
 }
 
 .turn-date, .turn-title, .turn-status, .turn-action {
     display: inline-block;
 }
 
+.turn-date {
+    padding: 1.6em;
+    float: left;
+}
+
+.turn-title {
+    padding: 1.6em;
+    float: left;
+}
+
 .turn-status {
+    padding: 0.75em;
     float: right;
 }
 
 .turn-action {
+    padding: 0.75em;
     float: right;
 }
 
@@ -238,38 +267,43 @@ body {
 }
 
 .turn-date p:first-child{
-    font-size: 2.25em;
+    font-size: 3em;
     color: #fff;
-    padding: 0 0.2em;
+    padding: 0.25em;
     display: inline-block;
-    
+    vertical-align: middle;
 }
 
 .turn-date p:nth-child(2){
     display: inline-block;    
     text-transform:uppercase;
     color: #fff;
-    font-size: 0.75em;
+    font-size: 1em;
     letter-spacing: 1px;
     padding: 0 1em;
     border-left: 1px solid #fff;
+    vertical-align: middle;
 }
 
 .turn-title p{
     margin: 0;
-    padding: 0.5em 1em;
-    font-size: 1.5em;
+    padding: 0;
+    font-size: 1.75em;
     color: #666;
+    vertical-align: middle;
 }
 
 .turn-status p{
     margin: 0;
+    font-size: 1.75em;
     padding: 0.5em 1em;
     background: #7ea568;
     color: #fff;
+    
 }
 
 .turn-action p{
     margin: 0;
+    font-size: 1.75em;
     padding: 0.5em 1em;
 }
