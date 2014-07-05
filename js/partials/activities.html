@@ -7,4 +7,11 @@
     $('#activities').addClass("side-menu-active");
     $('#friends').removeClass("side-menu-active");
     $('#settings').removeClass("side-menu-active");
+    
+    document.getElementById("page-title").innerHTML = "Activities";
+    $('#activities-menu').show();
+
+    function toggleactivites() {
+        $('#activities-menu').toggle();
+    }
 </script>

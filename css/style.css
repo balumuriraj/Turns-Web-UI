@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Quicksand);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
 @font-face {
@@ -141,15 +142,123 @@ body {
     border-left: 5px solid #f06060;
 }
 
+.side-submenu-container{
+    background: #111;
+    height: 100%;
+    color: #fff;
+    text-align: left;
+    position: absolute;
+    left: 13.5em;
+    z-index: 2;
+}
+
+.side-submenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.side-submenu ul li {
+
+}
+
+.side-submenu ul li a{
+    color: #bbb;
+    text-decoration: none;
+}
+
+.side-submenu ul li p{
+    padding: 1em 3em;
+    font-size: 2em;
+}
+
+.side-submenu ul li p:hover{
+    background: #fff;
+    color: #f06060;
+}
+
+.side-submenu ul li p:active{
+    position: relative;
+    top: 2px;
+}
+
 /**** Angular section ****/
 
 .angular-section{
     position: relative;
-    left: 13.6em;
+    margin-left: 13.6em;
 }
 
-.page-title{
-    padding: 1.1em 2em;
-    background: #ddd;
-    font-size: 3.5em;
+#page-title{
+    display: inline-block;
+    font-family: 'Quicksand';
+    font-size: 4em;
+    margin: 0;
+    padding: 0 1em;
+    vertical-align: middle;
+}
+
+.dashboard-turn-status{
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.dashboard-turn-status p:first-child{
+    font-family: 'Quicksand';
+    font-size: 10em;
+    margin: 0;
+}
+
+.dashboard-turn-status p:nth-child(2){
+    color: #999;
+    font-size: 2em;
+    padding-bottom: 2em;
+    margin: 0;
+}
+
+.turn-left { 
+    color: #fbc73b;
+}
+
+.turn-middle {  
+    color: #7ea568;
+}
+
+.turn-right { 
+    color: #f06060;
+}
+
+.dashboard-date{
+    background: #f06060;
+    color: #fff;
+    margin: 0;
+    padding: 0 0 3em 3em;
+}
+
+.dashboard-date p:first-child{
+    font-family: 'Quicksand';
+    font-size: 10em;
+    margin: 0;
+    display: inline-block;
+}
+
+.dashboard-date p:nth-child(2){
+    font-size: 3em;
+    float: right;
+    display: inline-block;
+    padding: 1em;
+}
+
+.dashboard-date p:nth-child(3){
+    font-size: 3em;
+    margin:0;
+    margin-top: -1em;
+}
+
+.dashboard-date p:nth-child(4){
+    font-size: 1.75em;
+    margin:0;
+    margin-top: 2em;
 }
