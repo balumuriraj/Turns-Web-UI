@@ -13,13 +13,14 @@
     <meta name="description" content="Turns - Count the turns with your friends">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/icons.css">    
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media-queries.css">
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 
@@ -32,15 +33,42 @@
     <header>
         <nav class="headbar">
             <div class="contianer-fluid">
-                <div class="headbar-topline"></div>
-                <div class="headbar-header wrap">
-                    <a class="headbar-logo" href="#"><span class="icon-fire"></span> Turns</a>
-                    <a href="#" class="headbar-account"> Wayne Rooney <span class="icon-user2"></span></a>
+                <div class="headbar-header wrap clearfix">
+                    <div class="headbar-logo" href="#"><img src="images/logo.png" class="logo" /></div>
+                    <a href="#" class="headbar-account"><span class="icon-sign-out"></span></a>
+                    <a href="#" class="headbar-account"><span class="icon-user2"></span></a>
+                    
                 </div>
             </div>
         </nav>
     </header>
-
+    
+    <div class="side-menu-container">
+        <nav class="side-menu">
+            <ul>
+                <li id="dashboard">
+                    <a href="#/dashboard">
+                        <p><span class="icon-box"></span><br>Dboard</p>
+                    </a>
+                </li>
+                <li id="activities">
+                    <a href="#/activities">
+                        <p><span class="icon-rocket3"></span><br>Activities</p>
+                    </a>
+                </li>
+                <li id="friends">
+                    <a href="#/friends">
+                        <p><span class="icon-users"></span><br>Friends</p>
+                    </a>
+                </li>
+                <li id="settings">
+                    <a href="#/settings">
+                        <p><span class="icon-cog2"></span><br>Settings</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
     <!-- MAIN CONTENT AND INJECTED VIEWS -->
     <section class="angular-section">
 

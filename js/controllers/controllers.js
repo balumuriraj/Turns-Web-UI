@@ -1,9 +1,14 @@
 //This controller retrieves data from the multimediaService and associates it with the $scope
 //The $scope is ultimately bound to the multimedia view
-app.controller('dashboard-Controller', [ '$scope', function ($scope) {
+app.controller('main-Controller', [ '$scope', function ($scope) {
 
     $scope.activities = ['Roomies', 'Dinner', 'Lunch', 'Washing'];
     $scope.friends = ['Robin Van Persie', 'Shinjin Kagawa', 'Juan Mata', 'Ander Herera'];
+
+}]);
+
+app.controller('activities-Controller', [ '$scope', function ($scope) {
+
     $scope.feeds = { 'results': [
         {
             'date': new Date(),

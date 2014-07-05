@@ -37,18 +37,14 @@ body {
 /* End hide from IE-mac */
 
 .wrap {
-    width: 98%;
+    width: 100 %;
     margin: 0 auto;
-    max-width: 1440px;
 }
 
 .headbar {
-    background: #333;
+    background: #222;
     color: #fff;
     border-radius: 0;
-    -webkit-box-shadow: 0 4px 6px -6px black;
-    -moz-box-shadow: 0 4px 6px -6px black;
-    box-shadow: 0 4px 6px -6px black;
 }
 
 .headbar-topline{
@@ -58,26 +54,31 @@ body {
 
 .headbar-header{
     color: #fff;
-    padding: 1em 3em;
+    
 }
 
 .headbar-logo{
-    text-decoration: none;
-    color: #ddd;
-    font-size: 2.5em;
+    width: 13.5em;
+    background: #333;
+    display: inline-block;
 }
 
-.headbar-logo:hover{
-    text-decoration: none;
-    color: #fff;
+.logo{
+    width: 100%;
+    padding: 2em 3em;
+    cursor: pointer;
+}
+
+.logo:hover{
+    background: #444;
 }
 
 .headbar-account{
     float: right;
     text-decoration: none;
     color: #ddd;
-    font-size: 1.5em;
-    padding: 0.5em 1em;
+    font-size: 2em;
+    padding: 2em;
 }
 
 .headbar-account:hover{
@@ -86,224 +87,69 @@ body {
     color: #fff;
 }
 
-.side-menu{
-    background: #47a3da;
-    color: #fff;
-    padding: 2em;
-    -webkit-box-shadow: 0 4px 6px -6px black;
-    -moz-box-shadow: 0 4px 6px -6px black;
-    box-shadow: 0 4px 6px -6px black;
+.headbar-account span{
+    font-size: 1.8em;
 }
 
-.side-menu ul{
+/**** Side menu ****/
+
+.side-menu-container{
+    position: absolute;
+    height: 100%;
+    background: #222;
+    color: #999;
+    text-align: center;
+}
+
+.side-menu ul {
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
+}
+
+.side-menu ul li {
+    width: 13.5em;
 }
 
 .side-menu ul li a{
+    color: #999;
     text-decoration: none;
-    color: #fff;
+}
+
+.side-menu ul li p{
+    padding: 2em;
     font-size: 1.5em;
-    padding: 0.75em 1em;
-    display: block;
-    letter-spacing: 1px;
 }
 
-.side-menu ul li a:hover{
-    text-decoration: none;
-    background: #fff;
-    color: #555;
+.side-menu ul li p:hover{
+    background: #111;
+    color: #ddd;
 }
 
-.menu-active{
-    border-left: 5px solid rgba(0, 0, 0, .3)
-}
-
-.side-menu ul li ul {
-    background: rgba(0, 0, 0, .1);
-}
-
-.side-menu ul li ul li{
-    
-}
-
-.side-menu ul li ul li a{
-    font-size: 1.25em;
-    padding-left: 3em;
-    letter-spacing: 0px;
-}
-
-.settings{
-    background: #555;
-}
-
-.main-section{
-    background: #fff;
+.side-menu ul li p:active{
     position: relative;
-    width: 100%;
-    height: 100%;
-    -webkit-box-shadow: 0 4px 6px -6px black;
-    -moz-box-shadow: 0 4px 6px -6px black;
-    box-shadow: 0 4px 6px -6px black;
+    top: 2px;
 }
 
-.main-section{
-    padding: 4em;
-}
-
-.main-header {
-
-}
-
-.main-label {
-    font-size: 4em;
-    display: inline-block;
-    font-weight: bold;
-    color: #999;
-    margin: 0;
-    padding: 0;
-}
-
-.main-header button{
-    margin: 0.75em;
-    display: inline-block;
-    float: right;
-}
-
-.bttn{
-    display: block;
-    border: none;
-    outline: 0;
-    background: #47a3da;
-    padding: 0.5em 1em;
-    font-size: 1.5em;
-    color: #fff;
-}
-
-.dashboard-message{
+.side-menu ul li p span{
     font-size: 3em;
-    text-align: center;
-    color: #999;
-    margin: 0;
 }
 
-.dashboard-message span{
-    font-size: 1.5em;
-    color: #555;
+.side-menu-active {
+    background: #111;
+    color: #ddd;
+    border-left: 5px solid #f06060;
 }
 
-.turn-left, .turn-middle, .turn-right{
-    font-size: 1.25em;
-    padding: 0.5em;
-    text-align: center;
-    color: #999;
+/**** Angular section ****/
+
+.angular-section{
+    position: relative;
+    left: 13.6em;
 }
 
-.turn-middle{
-    border-left: 1px solid #ddd;   
-    border-right: 1px solid #ddd;   
-}
-
-.turn-left span{
-    font-size: 4em;  
-    color: #fbc73b;
-}
-
-.turn-middle span{
-    font-size: 4em;  
-    color: #7ea568;
-}
-
-.turn-right span{
-    font-size: 4em; 
-    color: #f06060;
-}
-
-.turn-petti{
-    background: #fff;
-    -webkit-box-shadow: 0 4px 6px -6px black;
-    -moz-box-shadow: 0 4px 6px -6px black;
-    box-shadow: 0 4px 6px -6px black;
-}
-
-.turn-summary{
-    padding: 1.25em 1.5em;
-}
-
-.turn-date, .turn-title, .turn-status, .turn-action {
-    display: inline-block;
-}
-
-.turn-date {
-    padding: 1.6em;
-    float: left;
-}
-
-.turn-title {
-    padding: 1.6em;
-    float: left;
-}
-
-.turn-status {
-    padding: 0.75em;
-    float: right;
-}
-
-.turn-action {
-    padding: 0.75em;
-    float: right;
-}
-
-.turn-date {
-    margin: 0;
-    padding: 0 0.5em;
-    background: #999;
-}
-
-.turn-date p{
-    margin: 0;
-    text-align: center;
-}
-
-.turn-date p:first-child{
-    font-size: 3em;
-    color: #fff;
-    padding: 0.25em;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.turn-date p:nth-child(2){
-    display: inline-block;    
-    text-transform:uppercase;
-    color: #fff;
-    font-size: 1em;
-    letter-spacing: 1px;
-    padding: 0 1em;
-    border-left: 1px solid #fff;
-    vertical-align: middle;
-}
-
-.turn-title p{
-    margin: 0;
-    padding: 0;
-    font-size: 1.75em;
-    color: #666;
-    vertical-align: middle;
-}
-
-.turn-status p{
-    margin: 0;
-    font-size: 1.75em;
-    padding: 0.5em 1em;
-    background: #7ea568;
-    color: #fff;
-    
-}
-
-.turn-action p{
-    margin: 0;
-    font-size: 1.75em;
-    padding: 0.5em 1em;
+.page-title{
+    padding: 1.1em 2em;
+    background: #ddd;
+    font-size: 3.5em;
 }
