@@ -3,23 +3,39 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="dashboard-turn-status">
-                            <p class="turn-left">25</p>
-                            <p>Turns completed</p>
+                <div class="dashboard-turn-container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="dashboard-turn-status">
+                                <p class="turn-left">25</p>
+                                <p>Turns completed</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="dashboard-turn-status">
+                                <p class="turn-middle">4</p>
+                                <p>Turns in advance</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="dashboard-turn-status">
+                                <p class="turn-right">7</p>
+                                <p>Turns remaining</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="dashboard-turn-status">
-                            <p class="turn-middle">4</p>
-                            <p>Turns in advance</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="dashboard-turn-status">
-                            <p class="turn-right">7</p>
-                            <p>Turns remaining</p>
+                </div>
+                <br><br>
+                <div class="dashboard-notification-container">
+                    <div class="petti" ng-repeat="notification in notifications.results">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="dashboard-notification">
+                                    <div><p style="background: #{{notification.color}}"><span class="icon-{{notification.icon}}"></span></p></div>
+                                    <div><p>{{notification.activity}}</p><p>You have turns pending in this activity</p></div>
+                                    <div><p><span class="icon-thumbs-up"></span></p><p><span class="icon-cog2"></span></p></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -27,7 +43,8 @@
             <div class="col-md-3">
                 <div class="dashboard-date">
                     <p>5</p>
-                    <p><span class="icon-calendar3"></span></p>
+                    <p><span class="icon-calendar3"></span>
+                    </p>
                     <p>July</p>
                     <p>You have 2 turns today</p>
                 </div>
