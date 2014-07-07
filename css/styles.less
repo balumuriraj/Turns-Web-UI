@@ -75,6 +75,10 @@ body {
     background: #222;
     color: #fff;
     border-radius: 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
     
     .headbar-header{
         color: #fff; 
@@ -128,7 +132,8 @@ body {
 /**** Side menu ****/
 
 .side-menu-container{
-    position: absolute;
+    position: fixed;
+    top: 12em;
     height: 100%;
     background: #222;
     color: #999;
@@ -183,6 +188,7 @@ body {
     color: #fff;
     text-align: left;
     position: absolute;
+    top: 12em;
     left: 13.5em;
     z-index: 2;
     
@@ -220,6 +226,7 @@ body {
 
 .angular-section{
     position: relative;
+    top: 12em;
     margin-left: 13.6em;
     padding: 1em 0 0 1em;
 }
@@ -265,6 +272,7 @@ body {
     background: @color-light_red;
     color: #fff;
     margin: 0;
+    margin-right: 1em;
     padding: 0 1em 3em 4em;
         
     p:first-child{
@@ -297,6 +305,7 @@ body {
 
 .ds-timeline-container{
     margin: 0;
+    margin-right: 1em;
     
     .notifications-title{
         font-size: 3em;
@@ -508,6 +517,7 @@ body {
 
 .members-container{
     margin: 0;
+    margin-right: 1em;
     
     .member-title {
         padding: 3em;

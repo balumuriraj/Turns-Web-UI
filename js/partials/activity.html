@@ -2,7 +2,7 @@
 <div ng-controller="activity-Controller" class="wrap">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-sm-12 col-md-8 col-lg-9">
                 <section class="ds-timeline-container">
                     <div class="notifications-title">Feed</div>
                     <div id="ds-timeline" class="clearfix">
@@ -28,7 +28,7 @@
                 </section>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-sm-12 col-md-4 col-lg-3">
                 <section class="members-container">
                     <div class="member-title clearfix">
                         <p><span class="icon-users"></span> Members</p>
@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 <script type="text/javascript">
     $('#dashboard').removeClass("side-menu-active");
@@ -56,7 +56,7 @@
     $('#friends').removeClass("side-menu-active");
     $('#settings').removeClass("side-menu-active");
     
-    document.getElementById("page-title").innerHTML = "Activity/Roomies";
+    document.getElementById("page-title").innerHTML = "Activity/{{feeds.name}}";
     $('#activities-menu').hide();
     
     function showbutton(obj) {
@@ -71,3 +71,5 @@
         });
     }
 </script>
+    
+</div>
