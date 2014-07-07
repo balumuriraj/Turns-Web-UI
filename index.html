@@ -80,7 +80,7 @@
     <div class="side-submenu-container" ng-controller="main-Controller" id="activities-menu">
         <nav class="side-submenu">
             <ul>
-                <li ng-repeat="activity in activities"><a href=""><p><span class="icon-star5"></span> {{activity}}</p></a>
+                <li ng-repeat="activity in activities"><a href="#/activities/{{activity.objectID}}"><p><span class="icon-star5"></span> {{activity.name}}</p></a>
                 </li>
                 <li><a href=""><p><span class="icon-rocket3"></span> Show All</p></a>
                 </li>

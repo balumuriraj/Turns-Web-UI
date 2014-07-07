@@ -1,0 +1,73 @@
+<br>
+<div ng-controller="activity-Controller" class="wrap">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9">
+                <section class="ds-timeline-container">
+                    <div class="notifications-title">Feed</div>
+                    <div id="ds-timeline" class="clearfix">
+                        <div class="timelineBar"></div>
+                        <div class="ds-timeline-block clearfix" ng-repeat="feed in feeds.log">
+                            <div class="ds-timeline-content" onmouseover="showbutton(this)" onmouseout="hidebutton(this)">
+                                <p>{{feed.name}}</p>
+                                <p>has completed this activity at {{feed.date | date: 'HH:mm'}}</p>
+                                <div class="accept-turn" id="accept-turn">
+                                    <button><span class="icon-pencil"></span> Edit Turn</button>
+                                    <button><span class="icon-x"></span> Delete Turn</button>
+                                </div>
+                            </div>
+                            <div class="ds-timeline-date">
+                                <p>{{feed.date | date: 'dd MMM, yyyy'}}</p>
+                            </div>
+                            <div class="ds-timeline-icon">
+                                <p style="background: #{{feeds.color}}"><span class="icon-{{feeds.icon}}"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-md-3">
+                <section class="members-container">
+                    <div class="member-title clearfix">
+                        <p><span class="icon-users"></span> Members</p>
+                        <p><button><span class="icon-plus"></span></button></p>
+                    </div>
+                    <div class="members-sub-container">
+                        <div class="timelineBar"></div>
+                        <div ng-repeat="member in feeds.members" class="member-block clearfix">
+                            <img src="{{member.pic}}" /> 
+                            <div>
+                                <p>{{member.name}}</p>
+                                <p>{{member.turns_completed}} turns completed</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#dashboard').removeClass("side-menu-active");
+    $('#activities').addClass("side-menu-active");
+    $('#friends').removeClass("side-menu-active");
+    $('#settings').removeClass("side-menu-active");
+    
+    document.getElementById("page-title").innerHTML = "Activity/Roomies";
+    $('#activities-menu').hide();
+    
+    function showbutton(obj) {
+        $(obj).children("div").css({
+            'top': '0'
+        });
+    }
+
+    function hidebutton(obj) {
+        $(obj).children("div").css({
+            'top': '-15em'
+        });
+    }
+</script>

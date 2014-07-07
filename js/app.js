@@ -14,6 +14,11 @@ app.config(function ($routeProvider) {
                 controller: 'activities-Controller',
                 templateUrl: 'js/partials/activities.html'
             })
+        .when('/activities/:activityId',
+            {
+                controller: 'activity-Controller',
+                templateUrl: 'js/partials/activity.html'
+            })
         .when('/friends',
             {
                 controller: 'friends-Controller',
