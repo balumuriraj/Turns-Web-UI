@@ -137,25 +137,6 @@ body {
     }
 }
 
-.login-options-container {
-    display: none;
-    text-align: center;
-    background: #eee;
-    padding: 1em;
-    
-    .login-options {
-        padding: 1em;
-        font-size: 2em;
-        
-        span {
-            border-radius: 2px;
-            margin: 0 0.25em;
-            padding: 0.5em;
-            color: #fff;
-        }
-    }
-}
-
 .background-cover{
     position: absolute;
     width: 100%;
@@ -169,7 +150,7 @@ body {
     transition: all 0.7s ease;
 }
 
-.login-container{
+.formlayout() {
     background: #fff;
     position: absolute;
     top: -100em;
@@ -271,8 +252,15 @@ body {
     .form-bttn:active {
         position: relative;
         top: 2px;
-    }
+    }   
+}
 
+.login-container{
+    .formlayout();
+}
+
+.signup-container{
+    .formlayout();
 }
 
 .home-welcome-container{
@@ -299,4 +287,43 @@ body {
             width: 55%;
         }
     }
+}
+
+.footer-container{
+    padding: 5em;
+    background: #222;
+    color: #fff;
+    
+    .rights-section{
+        padding: 1em;
+        .footer-logo{
+            width: 6em;   
+        }
+        
+        span {
+            font-size: 2.5em;
+            padding: 0.5em;
+        }
+        
+        p {
+            font-size: 1.5em;
+        }
+    }
+    
+    .social-options-container {
+    text-align: right;
+    padding: 1em;
+    
+    .social-options {
+        padding: 1em;
+        font-size: 2em;
+        
+        span {
+            border-radius: 2px;
+            margin: 0 0.25em;
+            padding: 0.5em;
+            color: #fff;
+        }
+    }
+}
 }
