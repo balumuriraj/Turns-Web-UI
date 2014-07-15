@@ -1,0 +1,302 @@
+/* Colors for Website */
+@color-light_red: #f06060;
+@color-light_green: #7ea568; 
+@color-dark_yellow: #fbc73b;  
+@color-light_blue: #47a3da; 
+@color-light_midnight: #34495e; 
+@color-dark_midnight: #2c3e50; 
+@color-background: #e9f0f5;
+
+@import url(http://fonts.googleapis.com/css?family=Quicksand);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+
+@font-face {
+    font-family: 'Nevis';
+    src: url('../fonts/nevis.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'nexabold';
+    src: url('../fonts/Nexa Bold.otf') format('truetype');
+}
+@font-face {
+    font-family: 'nexalight';
+    src: url('../fonts/Nexa Light.otf') format('truetype');
+}
+@font-face {
+    font-family: 'gotham';
+    src: url('../fonts/Gotham-Book.otf') format('truetype');
+}
+@font-face {
+    font-family: 'gothamr';
+    src: url('../fonts/gotham-rounded-book.otf') format('truetype');
+}
+@font-face {
+    font-family: 'gothamrl';
+    src: url('../fonts/gotham-rounded-light.otf') format('truetype');
+}
+@font-face {
+    font-family: 'gothamrm';
+    src: url('../fonts/gotham-rounded-medium.otf') format('truetype');
+}
+
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;   
+}
+
+body {
+    color: color-dark_midnight;
+    font-size: 1em;
+    font-family: 'gotham';
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    background: @color-background;
+    overflow-x: hidden;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+.wrap {
+    width: 100 %;
+    margin: 0 auto;
+}
+
+.home-headbar{
+    background: #222;
+    color: #fff;
+    .home-headbar-header{
+        color: #fff; 
+        position: relative;
+        
+        .home-headbar-logo{
+            display: inline-block;
+            float: left;
+            line-height: 1.5em;
+            letter-spacing: 1px;
+            font-size: 3em;
+            vertical-align: middle;
+            padding: 0.5em;
+            margin-left: 3.75em;
+            font-family: 'gothamrm';
+            
+            .home-logo{
+                position: absolute;
+                top: 0;
+                left: 2em;
+                margin-left: -1em;
+                width: 2.75em;   
+            }
+        }
+        
+        .home-headbar-menulink{
+            display: inline-block;
+            text-decoration: none;
+            color: #ddd;
+            font-size: 1.75em;
+            padding: 1.5em;
+            float: right;
+            
+            span{
+                font-size: 1em;
+            }
+        }
+        
+        .home-headbar-menulink:hover {
+            background: #555;
+        }
+        
+        .home-headbar-menulink:active {
+            position: relative;
+            top: 2px;
+        }
+    }
+}
+
+.login-options-container {
+    display: none;
+    text-align: center;
+    background: #eee;
+    padding: 1em;
+    
+    .login-options {
+        padding: 1em;
+        font-size: 2em;
+        
+        span {
+            border-radius: 2px;
+            margin: 0 0.25em;
+            padding: 0.5em;
+            color: #fff;
+        }
+    }
+}
+
+.background-cover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #555;
+    opacity: 0;
+    z-index: -5;
+    -webkit-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.login-container{
+    background: #fff;
+    position: absolute;
+    top: -100em;
+    left: 50%;
+    margin-left: -20em;
+    padding: 4em;
+    border-radius: 5px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    
+    .form-title{
+        font-family: gotham;
+        font-size: 2.75em;
+        
+        p{
+            margin: 0;
+        }
+        
+        p:first-child {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        p:nth-child(2) {
+            display: inline-block;
+            float: right;
+            vertical-align: middle;
+            cursor: pointer;
+            
+            span{
+                font-size: 0.6em;
+                padding: 0.5em;
+                background: #f06060;
+                color: #fff;
+                border-radius: 3px;
+            }
+        }
+        
+        p:nth-child(2):hover {
+            opacity: 0.9;
+        }
+        p:nth-child(2):active {
+            position: relative;
+            top: 1px;
+        }
+    }
+    
+    .form-group{
+        .login-field{
+            background: #eee;
+            outline: 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 2em;
+            padding: 0.5em 1em;
+            width: 20em;
+            border: 2px solid #eee;
+            color: #999;
+        }
+        
+        .login-field-active{
+            background: #fff;
+            border: 2px solid #ddd;
+        }
+        
+        .login-error{
+            margin: 0;
+            padding: 0.5em 1.5em;
+            color: #fff;
+            background: #f06060;
+            border-radius: 4px;
+            font-size: 1.5em;
+            
+            span {
+                float: right;
+                line-height: 1.5em;
+            }   
+        }
+    }
+    
+    .form-bttn {
+        outline: none;
+        border: 0;
+        background: #5fcf80;
+        color: #fff;
+        padding: 0.65em 1em;
+        border-radius: 5px;
+        font-size: 1.75em;
+        font-family: gothamrm;
+        box-shadow: 0 3px 0 #3ac162;
+    }
+    
+    .form-bttn:hover {
+        opacity: 0.85;
+    }
+    
+    .form-bttn:active {
+        position: relative;
+        top: 2px;
+    }
+
+}
+
+.home-welcome-container{
+    text-align: center;
+    background: #fff;
+    padding: 4em;
+    .home-welcome-title{
+        padding: 4em;
+        
+        p:first-child {
+            font-size: 6em;      
+            color: #666;
+            letter-spacing: 1px;
+        }
+        
+        p:nth-child(2) {
+            font-size: 2.5em;
+            color: #ddd;
+            letter-spacing: 1px;
+        }
+        
+        img {
+            padding-top: 3em;
+            width: 55%;
+        }
+    }
+}
