@@ -59,13 +59,18 @@
             </div>
             <br>
             <!-- SUBMIT BUTTON -->
-            <button type="submit" class="form-bttn" ng-disabled="userForm.$invalid">Submit</button>
+            <button ng-hide="loading" type="submit" class="form-bttn" ng-disabled="userForm.$invalid">Submit</button>
+            <button ng-show="loading" class="bttn-submitting"><i class="fa fa-spinner fa-spin"></i> Signing in..</button>
+            {{response}}
         </form>
     </div>
 
     <!-- signup -->
     <div class="signup-container" ng-controller="signup-Controller" id="signup-container">
-        <form name="userSignupForm" ng-submit="submitForm(userSignupForm.$valid)" novalidate>
+        <div ng-show="success" class="userSignupFormSuccess">
+            <button class="form-bttn" onclick="closesignup(); opensignin()"><span class="icon-checkmark"></span> Success! Now Login</button>
+        </div>
+        <form ng-hide="success" name="userSignupForm" ng-submit="submitForm(userSignupForm.$valid)" novalidate>
             <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
             <div class="form-title clearfix">
                 <p>Sign Up</p>
@@ -76,7 +81,7 @@
             <br>
             <!-- NAME -->
             <div class="form-group">
-                <input type="text" name="name" class="login-field" id="email-field" placeholder="Name" ng-model="user.name" ng-minlength="3" ng-maxlength="20" required>
+                <input type="text" name="name" class="login-field" id="signup-name-field" placeholder="Name" ng-model="user.name" ng-minlength="3" ng-maxlength="20" required>
                 <p ng-show="userSignupForm.name.$error.required && !userSignupForm.name.$pristine" class="login-error">Name is required <span class="icon-x"></span>
                 </p>
                 <p ng-show="userSignupForm.name.$error.minlength && !userSignupForm.name.$pristine" class="login-error">Min length is 3 <span class="icon-x"></span>
@@ -86,7 +91,7 @@
             </div>
             <!-- EMAIL -->
             <div class="form-group">
-                <input type="email" name="email" class="login-field" id="email-field" placeholder="Email Address" ng-model="user.email" required>
+                <input type="email" name="email" class="login-field" id="signup-email-field" placeholder="Email Address" ng-model="user.email" required>
                 <p ng-show="userSignupForm.email.$error.required && !userSignupForm.email.$pristine" class="login-error">Email is required <span class="icon-x"></span>
                 </p>
                 <p ng-show="userSignupForm.email.$error.email && !userSignupForm.email.$pristine" class="login-error">Email is invalid <span class="icon-x"></span>
@@ -94,7 +99,7 @@
             </div>
             <!-- PASSWORD -->
             <div class="form-group">
-                <input type="password" name="password" class="login-field" id="password-field" placeholder="Password" ng-model="user.password"  ng-minlength="4" ng-maxlength="20" required>
+                <input type="password" name="password" class="login-field" id="signup-password-field" placeholder="Password" ng-model="user.password"  ng-minlength="4" ng-maxlength="20" required>
                 <p ng-show="userSignupForm.password.$error.required && !userSignupForm.password.$pristine" class="login-error">Password is required <span class="icon-x"></span>
                 </p>
                 <p ng-show="userSignupForm.password.$error.minlength && !userSignupForm.password.$pristine" class="login-error">Min length is 4 <span class="icon-x"></span>
@@ -104,7 +109,8 @@
             </div>
             <br>
             <!-- SUBMIT BUTTON -->
-            <button type="submit" class="form-bttn" ng-disabled="userSignupForm.$invalid">Submit</button>
+            <button ng-hide="loading" type="submit" class="form-bttn" ng-disabled="userSignupForm.$invalid">Sign up</button>
+            <button ng-show="loading" class="bttn-submitting"><i class="fa fa-spinner fa-spin"></i> Signing up..</button>
         </form>
     </div>
 
@@ -253,6 +259,9 @@
         $(document).mouseup(function (e) {
             var emailcontainer = $("#email-field");
             var passwordcontainer = $("#password-field");
+            var signupnamecontainer = $("#signup-name-field");
+            var signupemailcontainer = $("#signup-email-field");
+            var signuppasswordcontainer = $("#signup-password-field");
 
             if (!emailcontainer.is(e.target) // if the target of the click isn't the container...
                 && emailcontainer.has(e.target).length === 0) // ... nor a descendant of the container
@@ -268,6 +277,30 @@
                 passwordcontainer.removeClass("login-field-active");
             } else {
                 passwordcontainer.addClass("login-field-active");
+            }
+            
+            if (!signupnamecontainer.is(e.target) // if the target of the click isn't the container...
+                && signupnamecontainer.has(e.target).length === 0) // ... nor a descendant of the container
+            {
+                signupnamecontainer.removeClass("login-field-active");
+            } else {
+                signupnamecontainer.addClass("login-field-active");
+            }
+
+            if (!signupemailcontainer.is(e.target) // if the target of the click isn't the container...
+                && signupemailcontainer.has(e.target).length === 0) // ... nor a descendant of the container
+            {
+                signupemailcontainer.removeClass("login-field-active");
+            } else {
+                signupemailcontainer.addClass("login-field-active");
+            }
+            
+            if (!signuppasswordcontainer.is(e.target) // if the target of the click isn't the container...
+                && signuppasswordcontainer.has(e.target).length === 0) // ... nor a descendant of the container
+            {
+                signuppasswordcontainer.removeClass("login-field-active");
+            } else {
+                signuppasswordcontainer.addClass("login-field-active");
             }
         });
     </script>

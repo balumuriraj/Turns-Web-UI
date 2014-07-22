@@ -241,8 +241,8 @@ body {
         padding: 0.65em 1em;
         border-radius: 5px;
         font-size: 1.75em;
-        font-family: gothamrm;
         box-shadow: 0 3px 0 #3ac162;
+        letter-spacing: 1px;
     }
     
     .form-bttn:hover {
@@ -252,7 +252,20 @@ body {
     .form-bttn:active {
         position: relative;
         top: 2px;
-    }   
+    }
+    
+    .bttn-submitting {
+        outline: none;
+        border: 0;
+        background: #5fcf80;
+        color: #fff;
+        padding: 0.65em 1em;
+        border-radius: 5px;
+        font-size: 1.75em;
+        letter-spacing: 1px;
+        box-shadow: 0 3px 0 #5fcf80;
+        opacity: 0.85;
+    }
 }
 
 .login-container{
@@ -261,6 +274,22 @@ body {
 
 .signup-container{
     .formlayout();
+    
+    .userSignupFormSuccess {
+        width: 40em;
+        text-align: center;
+        
+        
+        p:first-child {
+            font-size: 3em;
+            color: #999;            
+            
+            span {
+                color: #5fcf80;
+            }
+        }
+
+    }
 }
 
 .home-welcome-container{
