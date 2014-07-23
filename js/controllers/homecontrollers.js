@@ -1,7 +1,8 @@
 "use strict";
 
-app.controller('login-Controller', [ '$scope', 'userFactory', function ($scope, userFactory) {
+app.controller('login-Controller', [ '$scope', '$http', 'userFactory', function ($scope, $http, userFactory) {
     $scope.loading = false;
+    $scope.loginerror = false;
     $scope.user = {email: '', password: ''};
     // function to submit the form after all validation has occurred			
     $scope.submitForm = function(isValid) {
@@ -10,6 +11,7 @@ app.controller('login-Controller', [ '$scope', 'userFactory', function ($scope, 
         if (isValid) {
             userFactory.loginUser($scope.user, $scope);
             $scope.loading = true;
+            $scope.loginerror = false;
         }
 
     };

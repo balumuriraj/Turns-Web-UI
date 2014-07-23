@@ -57,7 +57,9 @@
                 <p ng-show="userForm.password.$error.required && !userForm.password.$pristine" class="login-error">Password is required <span class="icon-x"></span>
                 </p>
             </div>
-            <br>
+            
+            <div class="invalid-login" ng-show="loginerror"><span class="icon-x"></span> Invalid Credentials</div>
+            
             <!-- SUBMIT BUTTON -->
             <button ng-hide="loading" type="submit" class="form-bttn" ng-disabled="userForm.$invalid">Submit</button>
             <button ng-show="loading" class="bttn-submitting"><i class="fa fa-spinner fa-spin"></i> Signing in..</button>
