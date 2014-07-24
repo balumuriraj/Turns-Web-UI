@@ -3,10 +3,10 @@
 
 "use strict";
 
-app.factory('userFactory', ['$http', 'Base64', function ($http, Base64) {
+app.factory('authService', ['$http', 'Base64', function ($http, Base64) {
 
     var baseUrl = 'http://localhost:8080/Turns-API';
-    var factory = [];
+    var currentuser;
 
     return {
         createUser: function(user, $scope){
@@ -35,14 +35,19 @@ app.factory('userFactory', ['$http', 'Base64', function ($http, Base64) {
             })
             .success(function(responseData) {
                 $scope.response = responseData;
-                console.log("Response data : " + responseData.name);
+                console.log("Login Successful : " + responseData.name);
                 $scope.loading = false;
-                $location.path('/index.html').replace();
+                currentuser = user;
             })
             .error(function(data) {
+                console.log("Login failed : ");
                 $scope.loginerror = true;
                 $scope.loading = false;
             });
+        },
+        
+        isLoggedIn: function(){
+            return (currentuser) ? currentuser : false;
         }
     };
     

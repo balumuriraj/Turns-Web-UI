@@ -4,6 +4,16 @@ var app = angular.module('turns',['ngRoute']);
 app.config(function ($routeProvider) {
     $routeProvider
     
+        .when('/',
+            {
+                controller: 'god-Controller',
+                templateUrl: 'js/partials/home.html'
+            })
+        .when('/login',
+            {
+                controller: 'login-Controller',
+                templateUrl: 'js/partials/login.html'
+            })
         .when('/dashboard',
             {
                 controller: 'dashboard-Controller',

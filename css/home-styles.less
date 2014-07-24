@@ -150,19 +150,7 @@ body {
     transition: all 0.7s ease;
 }
 
-.formlayout() {
-    background: #fff;
-    position: absolute;
-    top: -100em;
-    left: 50%;
-    margin-left: -20em;
-    padding: 4em;
-    border-radius: 5px;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    
+.innerformlayout() {
     .form-title{
         font-family: gotham;
         font-size: 2.75em;
@@ -274,11 +262,44 @@ body {
         letter-spacing: 1px;
         box-shadow: 0 3px 0 #5fcf80;
         opacity: 0.85;
-    }
+    }   
+}
+
+.formlayout() {
+    background: #fff;
+    position: absolute;
+    top: -100em;
+    left: 50%;
+    margin-left: -20em;
+    padding: 4em;
+    border-radius: 5px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    
+    .innerformlayout();
 }
 
 .login-container{
     .formlayout();
+}
+
+.main-login-container{
+    text-align: center;
+    background: #fff;
+    
+    .inner-login-container{
+        padding: 10em 0 15em 0;
+        background: #fff;
+        display: inline-block;
+        text-align: left;
+        .innerformlayout();
+        
+        .form-bttn, .bttn-submitting {
+            width: 100%;
+        }
+    }
 }
 
 .signup-container{

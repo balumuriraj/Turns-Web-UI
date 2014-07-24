@@ -1,5 +1,49 @@
 //This controller retrieves data from the multimediaService and associates it with the $scope
 //The $scope is ultimately bound to the multimedia view
+
+app.controller('god-Controller', [ '$scope', function ($scope) {
+
+    $scope.userloggedin = {'value': false};
+
+}]);
+
+app.controller('login-Controller', [ '$scope', '$location', 'authService', function ($scope, $location, authService) {
+    $scope.loading = false;
+    $scope.loginerror = false;
+    $scope.user = {email: '', password: ''};
+    // function to submit the form after all validation has occurred			
+    $scope.submitForm = function(isValid) {
+
+        // check to make sure the form is completely valid
+        if (isValid) {
+            authService.loginUser($scope.user, $scope)
+                .success(function(responseData) {
+                    
+                    $scope.userloggedin.value = true;
+                    $location.path('/dashboard');
+                });
+            $scope.loading = true;
+            $scope.loginerror = false;
+        }
+
+    };
+}]);
+
+app.controller('signup-Controller', [ '$scope', 'authService', function ($scope, authService) {
+    $scope.loading = false;
+    $scope.success = false;
+    $scope.user = {name: '', email: '', password: ''};
+    // function to submit the form after all validation has occurred			
+    $scope.submitForm = function(isValid) {
+
+        // check to make sure the form is completely valid
+        if (isValid) {
+            authService.createUser($scope.user, $scope);
+            $scope.loading = true;
+        }
+
+    };   
+}]);
     
 app.controller('main-Controller', [ '$scope', function ($scope) {
 

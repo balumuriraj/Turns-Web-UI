@@ -1,67 +1,68 @@
-<br>
-<div ng-controller="dashboard-Controller" class="wrap">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8">
-                <section class="ds-timeline-container">
-                    <div class="notifications-title">Notifications</div>
-                    <div id="ds-timeline" class="clearfix">
-                        <div class="timelineBar"></div>
-                        <div class="ds-timeline-block clearfix" ng-repeat="notification in notifications.results">
-                            <div class="ds-timeline-content" onmouseover="showbutton(this)" onmouseout="hidebutton(this)">
-                                <p>{{notification.activity}}</p>
-                                <p>You have turns pending in this activity</p>
-                                <div class="accept-turn" id="accept-turn">
-                                    <button><span class="icon-like"></span> Accept Turn</button>
+<section class="ngview-section" ng-show="userloggedin.value">
+    <div ng-controller="dashboard-Controller" class="wrap">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <section class="ds-timeline-container">
+                        <div class="notifications-title">Notifications</div>
+                        <div id="ds-timeline" class="clearfix">
+                            <div class="timelineBar"></div>
+                            <div class="ds-timeline-block clearfix" ng-repeat="notification in notifications.results">
+                                <div class="ds-timeline-content" onmouseover="showbutton(this)" onmouseout="hidebutton(this)">
+                                    <p>{{notification.activity}}</p>
+                                    <p>You have turns pending in this activity</p>
+                                    <div class="accept-turn" id="accept-turn">
+                                        <button><span class="icon-like"></span> Accept Turn</button>
+                                    </div>
+                                </div>
+                                <div class="ds-timeline-date">
+                                    <p>Today</p>
+                                </div>
+                                <div class="ds-timeline-icon">
+                                    <p style="background: #{{notification.color}}"><span class="icon-{{notification.icon}}"></span>
+                                    </p>
                                 </div>
                             </div>
-                            <div class="ds-timeline-date">
-                                <p>Today</p>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="dashboard-date">
+                        <p>5</p>
+                        <p><span class="icon-calendar3"></span>
+                        </p>
+                        <p>July</p>
+                        <p>You have 2 turns today</p>
+                    </div>
+                    <div class="dashboard-turn-container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="dashboard-turn-status">
+                                    <p class="turn-left">25</p>
+                                    <p>Turns completed</p>
+                                </div>
                             </div>
-                            <div class="ds-timeline-icon">
-                                <p style="background: #{{notification.color}}"><span class="icon-{{notification.icon}}"></span>
-                                </p>
+                            <div class="col-md-4" style="border-right: 1px solid #ddd; border-left: 1px solid #ddd;">
+                                <div class="dashboard-turn-status">
+                                    <p class="turn-middle">4</p>
+                                    <p>Turns in advance</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dashboard-turn-status">
+                                    <p class="turn-right">7</p>
+                                    <p>Turns remaining</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
 
-            <div class="col-md-4">
-                <div class="dashboard-date">
-                    <p>5</p>
-                    <p><span class="icon-calendar3"></span>
-                    </p>
-                    <p>July</p>
-                    <p>You have 2 turns today</p>
                 </div>
-                <div class="dashboard-turn-container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="dashboard-turn-status">
-                                <p class="turn-left">25</p>
-                                <p>Turns completed</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4" style="border-right: 1px solid #ddd; border-left: 1px solid #ddd;">
-                            <div class="dashboard-turn-status">
-                                <p class="turn-middle">4</p>
-                                <p>Turns in advance</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="dashboard-turn-status">
-                                <p class="turn-right">7</p>
-                                <p>Turns remaining</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
-</div>
+</section>
 
 
 <script type="text/javascript">

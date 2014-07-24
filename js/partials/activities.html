@@ -1,11 +1,15 @@
-<div ng-controller="activities-Controller" class="wrap">
-    <div class="activities-logo-container">
-        <div class="activities-logo-block" onmouseover="showactivitiesbuttn()" onmouseout="hideactivitiesbuttn()">
-            <span class="icon-rocket3"></span>
-            <p id="show-activities-button"><button>show activities</button></p>
+<section class="ngview-section" ng-show="userloggedin.value">
+    <div ng-controller="activities-Controller" class="wrap">
+        <div class="activities-logo-container">
+            <div class="activities-logo-block" onmouseover="showactivitiesbuttn()" onmouseout="hideactivitiesbuttn()">
+                <span class="icon-rocket3"></span>
+                <p id="show-activities-button">
+                    <button>show activities</button>
+                </p>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 <script type="text/javascript">
     $('#dashboard').removeClass("side-menu-active");
@@ -19,18 +23,18 @@
     function toggleactivites() {
         $('#activities-menu').toggle();
     }
-    
+
     function showactivitiesbuttn() {
-       $('#show-activities-button').css({
-           'opacity': '1',
-           'margin-top': '0'
-       });
+        $('#show-activities-button').css({
+            'opacity': '1',
+            'margin-top': '0'
+        });
     }
-    
+
     function hideactivitiesbuttn() {
-       $('#show-activities-button').css({
-           'opacity': '0',
-           'margin-top': '10em'
-       });
+        $('#show-activities-button').css({
+            'opacity': '0',
+            'margin-top': '10em'
+        });
     }
 </script>

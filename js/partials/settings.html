@@ -1,13 +1,15 @@
-<div ng-controller="settings-Controller" class="wrap">
-    <div class="page-title">Settings</div>
-</div>
+<section class="ngview-section" ng-show="userloggedin.value">
+    <div ng-controller="settings-Controller" class="wrap">
+        <div class="page-title">Settings</div>
+    </div>
+</section>
 
 <script type="text/javascript">
     $('#dashboard').removeClass("side-menu-active");
     $('#activities').removeClass("side-menu-active");
     $('#friends').removeClass("side-menu-active");
     $('#settings').addClass("side-menu-active");
-    
+
     document.getElementById("page-title").innerHTML = "Settings";
     $('#activities-menu').hide();
 </script>
