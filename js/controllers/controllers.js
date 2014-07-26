@@ -1,9 +1,28 @@
 //This controller retrieves data from the multimediaService and associates it with the $scope
 //The $scope is ultimately bound to the multimedia view
 
-app.controller('god-Controller', [ '$scope', function ($scope) {
+app.controller('god-Controller', [ '$scope', '$location', 'authService', function ($scope, $location, authService) {
 
-    $scope.userloggedin = {'value': false};
+    $scope.userloggedin;
+    $scope.userdetails = {'name': '', 'email': '', 'friends': '', 'groups': ''};
+
+    if(authService.isLoggedIn())
+    {
+        $scope.userloggedin = {'value': true};
+        var data = authService.getUserDetails();
+        $scope.userdetails = {'name': data.name, 'email': data.email, 'friends': data.friends, 'groups': data.groups};
+    }
+    else{
+        $scope.userloggedin = {'value': false};
+        $scope.userdetails = {'name': '', 'email': '', 'friends': '', 'groups': ''};
+    }
+
+    $scope.signout = function() {
+        authService.logoutUser();
+        $scope.userloggedin.value = false;
+        $scope.userdetails = {'name': '', 'email': '', 'friends': '', 'groups': ''};
+        $location.path('/login');
+    }
 
 }]);
 
@@ -20,7 +39,13 @@ app.controller('login-Controller', [ '$scope', '$location', 'authService', funct
                 .success(function(responseData) {
                     
                     $scope.userloggedin.value = true;
+                    $scope.userdetails.name = responseData.name;
+                    $scope.userdetails.email = responseData.email;
+                    $scope.userdetails.friends = responseData.friends;
+                    $scope.userdetails.groups = responseData.groups;
                     $location.path('/dashboard');
+                    $scope.user = {email: '', password: ''};
+                    closesignin();
                 });
             $scope.loading = true;
             $scope.loginerror = false;
@@ -217,5 +242,42 @@ app.controller('activity-Controller', [ '$scope', function ($scope) {
             }
         ]
     }
+
+}]);
+
+app.controller('add-activity-Controller', [ '$scope', function ($scope) {
+
+    $scope.loading = false;
+
+    $scope.colors = {
+        id: ['#f06060', '#7ea568', '#fbc73b', '#47a3da', '#34495e']
+    };
+
+    $scope.icons = {
+        id: ['icon-cart3', 'icon-food', 'icon-home22', 'icon-paint-format', 'icon-rocket3','icon-food2', 'icon-t-shirt', 'icon-moneybag', 'icon-fire', 'icon-leaf']
+    };
+
+    $scope.activity = {
+        name: '',
+        color: '#f06060',
+        icon: 'icon-rocket3',
+        members: []
+    };
+
+    $scope.changecolor = function(color) {
+        $scope.activity.color = color;
+    };
+
+    $scope.changeicon = function(icon) {
+        $scope.activity.icon = icon;
+    };
+
+    $scope.inviteFriend = function() {
+        $scope.activity.members.push({'name': '', 'email': ''});
+    };
+
+    $scope.removeFriend = function(index) {
+        $scope.activity.members.splice(index,1);
+    };
 
 }]);

@@ -3,10 +3,9 @@
 
 "use strict";
 
-app.factory('authService', ['$http', 'Base64', function ($http, Base64) {
+app.factory('authService', ['$http', '$cookieStore', 'Base64', function ($http, $cookieStore, Base64) {
 
     var baseUrl = 'http://localhost:8080/Turns-API';
-    var currentuser;
 
     return {
         createUser: function(user, $scope){
@@ -14,7 +13,7 @@ app.factory('authService', ['$http', 'Base64', function ($http, Base64) {
                 headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
                 url: baseUrl + '/register',
                 method: "POST",
-                data: user,
+                data: user
             })
             .success(function(responseData) {
                 $scope.response = responseData;
@@ -25,8 +24,10 @@ app.factory('authService', ['$http', 'Base64', function ($http, Base64) {
         },
         
         loginUser: function(user, $scope){
+
+            var encodedcreds= Base64.encode(user.email+':'+user.password);
             
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(user.email+':'+user.password);
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + encodedcreds;
             
             return $http({
                 headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
@@ -34,10 +35,12 @@ app.factory('authService', ['$http', 'Base64', function ($http, Base64) {
                 method: "GET"
             })
             .success(function(responseData) {
-                $scope.response = responseData;
                 console.log("Login Successful : " + responseData.name);
                 $scope.loading = false;
-                currentuser = user;
+                $cookieStore.put('loggedin', 'true');
+                $cookieStore.put('creds', encodedcreds);
+                $cookieStore.put('userdetails', responseData);
+                return responseData;
             })
             .error(function(data) {
                 console.log("Login failed : ");
@@ -45,9 +48,31 @@ app.factory('authService', ['$http', 'Base64', function ($http, Base64) {
                 $scope.loading = false;
             });
         },
+
+        logoutUser: function(){
+            $cookieStore.remove('loggedin');
+            $cookieStore.remove('creds');
+            $cookieStore.remove('userdetails');
+        },
         
         isLoggedIn: function(){
-            return (currentuser) ? currentuser : false;
+            var loginstatus;
+            loginstatus = $cookieStore.get('loggedin');
+            if(loginstatus == null)
+            {
+                loginstatus = false;
+            }
+            return loginstatus;
+        },
+
+        getUserDetails: function(){
+            var userdetails;
+            userdetails = $cookieStore.get('userdetails');
+            if(userdetails == null)
+            {
+                userdetails = '';
+            }
+            return userdetails;
         }
     };
     
