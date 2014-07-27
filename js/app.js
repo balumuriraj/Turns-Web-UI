@@ -28,6 +28,12 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: 'js/partials/activities/activities.html',
                 access: false
             })
+        .when('/activities/allActivities',
+        {
+            controller: 'all-activities-Controller',
+            templateUrl: 'js/partials/activities/allactivities.html',
+            access: false
+        })
         .when('/activities/addActivity',
         {
             controller: 'add-activity-Controller',
@@ -65,6 +71,9 @@ app.config(function ($routeProvider, $locationProvider) {
             {
                 $location.path('/login');
             }
+        }
+        else if(authService.isLoggedIn()) {
+            $location.path('/dashboard');
         }
     });
 }]);

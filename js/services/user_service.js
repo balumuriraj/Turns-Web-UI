@@ -39,7 +39,6 @@ app.factory('authService', ['$http', '$cookieStore', 'Base64', function ($http, 
                 $scope.loading = false;
                 $cookieStore.put('loggedin', 'true');
                 $cookieStore.put('creds', encodedcreds);
-                $cookieStore.put('userdetails', responseData);
                 return responseData;
             })
             .error(function(data) {
@@ -52,7 +51,6 @@ app.factory('authService', ['$http', '$cookieStore', 'Base64', function ($http, 
         logoutUser: function(){
             $cookieStore.remove('loggedin');
             $cookieStore.remove('creds');
-            $cookieStore.remove('userdetails');
         },
         
         isLoggedIn: function(){
@@ -66,13 +64,22 @@ app.factory('authService', ['$http', '$cookieStore', 'Base64', function ($http, 
         },
 
         getUserDetails: function(){
-            var userdetails;
-            userdetails = $cookieStore.get('userdetails');
-            if(userdetails == null)
-            {
-                userdetails = '';
-            }
-            return userdetails;
+            var encodedcreds= $cookieStore.get('creds');
+
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + encodedcreds;
+
+            return $http({
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                url: baseUrl + '/rest/getDetails',
+                method: "GET"
+            })
+                .success(function(responseData) {
+                    console.log("Got user details : " + responseData.name);
+                    return responseData;
+                })
+                .error(function(data) {
+                    alert("Please try again!!");
+                });
         }
     };
     

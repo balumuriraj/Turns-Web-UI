@@ -9,8 +9,13 @@ app.controller('god-Controller', [ '$scope', '$location', 'authService', functio
     if(authService.isLoggedIn())
     {
         $scope.userloggedin = {'value': true};
-        var data = authService.getUserDetails();
-        $scope.userdetails = {'name': data.name, 'email': data.email, 'friends': data.friends, 'groups': data.groups};
+        authService.getUserDetails()
+            .success(function(responseData) {
+                $scope.userdetails.name = responseData.name;
+                $scope.userdetails.email = responseData.email;
+                $scope.userdetails.friends = responseData.friends;
+                $scope.userdetails.groups = responseData.groups;
+            });
     }
     else{
         $scope.userloggedin = {'value': false};
@@ -37,7 +42,7 @@ app.controller('login-Controller', [ '$scope', '$location', 'authService', funct
         if (isValid) {
             authService.loginUser($scope.user, $scope)
                 .success(function(responseData) {
-                    
+
                     $scope.userloggedin.value = true;
                     $scope.userdetails.name = responseData.name;
                     $scope.userdetails.email = responseData.email;
@@ -67,9 +72,9 @@ app.controller('signup-Controller', [ '$scope', 'authService', function ($scope,
             $scope.loading = true;
         }
 
-    };   
+    };
 }]);
-    
+
 app.controller('main-Controller', [ '$scope', function ($scope) {
 
     $scope.activities = [
@@ -89,8 +94,8 @@ app.controller('main-Controller', [ '$scope', function ($scope) {
             'objectID': '456',
             'name': 'Washing'
         }
-     ];
-    
+    ];
+
     $scope.friends = ['Robin Van Persie', 'Shinjin Kagawa', 'Juan Mata', 'Ander Herera'];
 
 }]);
@@ -171,7 +176,7 @@ app.controller('activities-Controller', [ '$scope', function ($scope) {
 
 app.controller('activity-Controller', [ '$scope', function ($scope) {
 
-    $scope.feeds = { 
+    $scope.feeds = {
         'objectID': '123',
         'name': 'Roomies',
         'icon': 'rocket3',
@@ -279,5 +284,111 @@ app.controller('add-activity-Controller', [ '$scope', function ($scope) {
     $scope.removeFriend = function(index) {
         $scope.activity.members.splice(index,1);
     };
+
+}]);
+
+app.controller('all-activities-Controller', [ '$scope', function ($scope) {
+
+    $scope.loading = false;
+
+    $scope.activities = [
+        {
+            "id": "c2e3d194-e5fb-4ca1-93db-6df9103948d9",
+            "name": "Roomies",
+            "members":
+                [
+                    {
+                        "name": "Jambalhat",
+                        "emailId": "satya12344@email.com",
+                        "count": 0
+                    },
+                    {
+                        "name": "satya",
+                        "emailId": "satya.n93@email.com",
+                        "count": 0
+                    },
+                    {
+                        "name": "satya",
+                        "emailId": "satyaswaroopb@email.com",
+                        "count": 0
+                    }
+                ]
+        },
+        {
+            "id": "c8bb4520-0e3b-4876-bfd8-37c8288c0d85",
+            "name": "Washing",
+            "members":
+                [
+                    {
+                        "name": "Jambalhat",
+                        "emailId": "satya12344@email.com",
+                        "count": 0
+                    }
+                ]
+        },
+        {
+            "id": "c8bb4520-0e3b-4876-bfd8-37c8288c0d85",
+            "name": "Transport",
+            "members":
+                [
+                    {
+                        "name": "Jambalhat",
+                        "emailId": "satya12344@email.com",
+                        "count": 0
+                    }
+                ]
+        },
+        {
+            "id": "c8bb4520-0e3b-4876-bfd8-37c8288c0d85",
+            "name": "Shopping",
+            "members":
+                [
+                    {
+                        "name": "Jambalhat",
+                        "emailId": "satya12344@email.com",
+                        "count": 0
+                    }
+                ]
+        },
+        {
+            "id": "c8bb4520-0e3b-4876-bfd8-37c8288c0d85",
+            "name": "Cleaning",
+            "members":
+                [
+                    {
+                        "name": "Jambalhat",
+                        "emailId": "satya12344@email.com",
+                        "count": 0
+                    }
+                ]
+        }
+    ];
+
+}]);
+
+app.controller('friends-Controller', [ '$scope', function ($scope) {
+
+    $scope.friends = [
+        {
+            "name": "Wayne Rooney",
+            "email": "asdazzxc@gmail.com"
+        },
+        {
+            "name": "Shinjin Kagawa",
+            "email": "awfgdgtzx@gmail.com"
+        },
+        {
+            "name": "Juan Mata",
+            "email": "zxhty@gmail.com"
+        },
+        {
+            "name": "Robin Van PErsi",
+            "email": "hjoigbv@gmail.com"
+        },
+        {
+            "name": "Andre Herera",
+            "email": "bhhtrdc@gmail.com"
+        }
+    ];
 
 }]);

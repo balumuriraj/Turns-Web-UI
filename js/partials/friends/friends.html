@@ -1,6 +1,33 @@
 <section class="ngview-section" ng-show="userloggedin.value">
     <div ng-controller="friends-Controller" class="wrap">
-        <div class="page-title">Friends</div>
+        <div class="container-fluid friends-page">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="friends-container">
+                        <div class="item-block" ng-repeat="friend in friends | filter:searchfriend">
+                            <div><p style="background: #f06060"><span class="icon-user2"></span></p></div>
+                            <div class="box-label">
+                                <p>{{friend.name | truncate:15}}</p>
+                                <p>{{friend.email | truncate:15}}</p>
+                            </div>
+                        </div>
+                        <div class="item-block">
+                            <div><p style="background: #f06060"><span class="icon-plus"></span></p></div>
+                            <div class="box-label">
+                                <p>Add Friend</p>
+                                <p>Click here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search-container">
+                        <input type="text" ng-model="searchfriend" placeholder="search... "/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 

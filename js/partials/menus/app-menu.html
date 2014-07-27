@@ -6,13 +6,27 @@
                     <img src="images/logo.png" class="logo" />
                 </div>
                 <div id="page-title"></div>
-                <a href="" class="headbar-account" ng-click="signout()"><span class="icon-sign-out"></span></a>
-                <a href="" class="headbar-account"><span class="icon-user2"></span></a>
+                <!-- <a href="" class="headbar-account" ng-click="signout()"><span class="icon-sign-out"></span></a> -->
+                <a href="" class="headbar-account" id="headbar-account" onclick="headbaraccount()">
+                    <div><span class="icon-user2"></span></div>
+                    <div>
+                        <p>{{userdetails.name}}</p>
+                        <p>{{userdetails.email}}</p>
+                    </div>
+                    <div><span class="icon-angle-down"></span></div>
+                </a>
 
             </div>
         </div>
     </nav>
 </header>
+
+<div class="account-dropdown-menu" id="dropdownmenu">
+    <ul>
+        <li><a href="" class="menu-item"><span class="icon-user2"></span> <p>Profile</p></a></li>
+        <li><a href="" class="menu-item" ng-click="signout()"><span class="icon-sign-out"></span> <p>Sign out</p></a></li>
+    </ul>
+</div>
 
 <div class="side-menu-container">
     <nav class="side-menu">
@@ -53,7 +67,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="#/activities/allActivities">
                     <p><span class="icon-rocket3"></span> Show All</p>
                 </a>
             </li>
@@ -65,3 +79,12 @@
         </ul>
     </nav>
 </div>
+
+<script type="text/javascript">
+
+    $('#dropdownmenu').hide();
+    function headbaraccount() {
+        $('#headbar-account').toggleClass("headbar-account-active");
+        $('#dropdownmenu').toggle();
+    }
+</script>
