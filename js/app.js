@@ -52,6 +52,12 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: 'js/partials/friends/friends.html',
                 access: false
             })
+        .when('/friends/:friendId',
+        {
+            controller: 'friend-Controller',
+            templateUrl: 'js/partials/friends/friend.html',
+            access: false
+        })
         .when('/settings',
             {
                 controller: 'settings-Controller',

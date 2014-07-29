@@ -1,0 +1,36 @@
+<section class="ngview-section" ng-show="userloggedin.value">
+    <div ng-controller="friend-Controller" class="wrap">
+        <div class="container-fluid friend-page">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="friend-container">
+                        <div class="item-block" ng-repeat="group in userdetails.groups | filter:searchfriend">
+                            <div><p style="background: #f06060"><span class="icon-user2"></span></p></div>
+                            <div class="box-label">
+                                <p>{{friend.name | truncate:15}}</p>
+                                <p>{{friend.email | truncate:15}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search-container">
+                        <input type="text" ng-model="searchfriend" placeholder="search... "/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $('#dashboard').removeClass("side-menu-active");
+    $('#activities').removeClass("side-menu-active");
+    $('#friends').addClass("side-menu-active");
+    $('#settings').removeClass("side-menu-active");
+
+    document.getElementById("page-title").innerHTML = "Friend";
+    $('#activities-menu').hide();
+
+</script>
