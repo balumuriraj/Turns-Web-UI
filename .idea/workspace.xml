@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee27d27f-76f9-4569-ae29-72aae8a2f7c4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/services/activity_service.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/angularLocalStorage.js" />
       <change type="DELETED" beforePath="C:\My Stuff\My Edu\ASU\Job\Turns-Web-UI\css\style.css" afterPath="" />
       <change type="DELETED" beforePath="C:\My Stuff\My Edu\ASU\Job\Turns-Web-UI\home.html" afterPath="" />
       <change type="DELETED" beforePath="C:\My Stuff\My Edu\ASU\Job\Turns-Web-UI\js\controllers\homecontrollers.js" afterPath="" />
       <change type="DELETED" beforePath="C:\My Stuff\My Edu\ASU\Job\Turns-Web-UI\js\services\services.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/activity-controller.js" afterPath="$PROJECT_DIR$/js/controllers/activity-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/partials/activities/activity.html" afterPath="$PROJECT_DIR$/js/partials/activities/activity.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/partials/activities/addactivity.html" afterPath="$PROJECT_DIR$/js/partials/activities/addactivity.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/partials/activities/allactivities.html" afterPath="$PROJECT_DIR$/js/partials/activities/allactivities.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/partials/menus/app-menu.html" afterPath="$PROJECT_DIR$/js/partials/menus/app-menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/friend-controller.js" afterPath="$PROJECT_DIR$/js/controllers/friend-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/partials/friends/friend.html" afterPath="$PROJECT_DIR$/js/partials/friends/friend.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/friend_service.js" afterPath="$PROJECT_DIR$/js/services/friend_service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/partials/settings/settings.html" afterPath="$PROJECT_DIR$/js/partials/settings/settings.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/styles.css" afterPath="$PROJECT_DIR$/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/styles.less" afterPath="$PROJECT_DIR$/css/styles.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Turns-Web-UI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,8 +100,8 @@
       <file leaf-file-name="styles.less" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/styles.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4950495" vertical-offset="17379" max-vertical-offset="24718">
-              <caret line="1037" column="19" selection-start-line="1037" selection-start-column="19" selection-end-line="1037" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.25940594" vertical-offset="17243" max-vertical-offset="24718">
+              <caret line="1022" column="25" selection-start-line="1022" selection-start-column="8" selection-end-line="1022" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -799,8 +784,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/styles.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4950495" vertical-offset="17379" max-vertical-offset="24718">
-          <caret line="1037" column="19" selection-start-line="1037" selection-start-column="19" selection-end-line="1037" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.25940594" vertical-offset="17243" max-vertical-offset="24718">
+          <caret line="1022" column="25" selection-start-line="1022" selection-start-column="8" selection-end-line="1022" selection-end-column="25" />
           <folding />
         </state>
       </provider>
