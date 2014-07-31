@@ -88,6 +88,18 @@ body {
 
 /***functions****/
 
+.common-bttn() {
+  outline: none;
+  border: 0;
+  background: #eee;
+  color: #999;
+  padding: 0.65em 1em;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  border: 1px solid #eee;
+  margin-top: 0.25em;
+}
+
 .iconwraper() {
   vertical-align: middle;
   width: 9em;
@@ -632,11 +644,32 @@ body {
   margin-right: 1em;
 
   .notifications-title{
-    font-size: 3em;
+
     background: #fff;
     color: #999;
-    padding: 1em;
-    text-align: center;
+    padding: 2em 3em;
+
+    p{
+      font-size: 3em;
+      margin: 0;
+      display: inline-block;
+    }
+    button {
+      float: right;
+      display: inline-block;
+      vertical-align: middle;
+      .common-bttn();
+    }
+
+    button:hover {
+      background: #f06060;
+      color: #fff;
+    }
+
+    button:active {
+      position: relative;
+      top: 2px;
+    }
   }
 
   #ds-timeline{
@@ -887,6 +920,131 @@ body {
       }
 
     }
+  }
+}
+
+/**** Add Turn Modal ****/
+.add-turn-container {
+  position: absolute;
+  top: -100em;
+  left: 50%;
+  margin-left: -40em;
+  background: #fff;
+  z-index: 9999;
+  -webkit-box-shadow: 0 8px 6px -6px #555;
+  -moz-box-shadow: 0 8px 6px -6px #555;
+  box-shadow: 0 8px 6px -6px #555;
+
+  .modal-menu {
+    display: inline-block;
+
+    div {
+      background: #f06060;
+      color: #fff;
+      padding: 5em;
+
+      span {
+        font-size: 4em;
+      }
+    }
+
+    div:hover {
+      opacity: 0.75;
+    }
+  }
+
+  .modal-main-section{
+    vertical-align: top;
+    display: inline-block;
+    width: 50em;
+    height: auto;
+
+    .main-block {
+      padding: 3em;
+      .member-block {
+        padding: 2em;
+        cursor: pointer;
+        span {
+          font-size: 8em;
+          vertical-align: middle;
+          color: #555;
+          display: inline-block;
+        }
+
+        div {
+          margin-left: 1.5em;
+          display: inline-block;
+          vertical-align: middle;
+
+          p{
+            margin: 0;
+          }
+
+          p:first-child {
+            font-size: 3em;
+            color: #555;
+          }
+
+          p:nth-child(2) {
+            font-size: 2em;
+            color: #aaa;
+          }
+        }
+      }
+
+      .member-block:hover {
+        background: #eee;
+      }
+
+      .activity-block {
+        padding: 2em;
+        cursor: pointer;
+        span {
+          font-size: 8em;
+          vertical-align: middle;
+          color: #555;
+          display: inline-block;
+        }
+
+        div {
+          margin-left: 1.5em;
+          display: inline-block;
+          vertical-align: middle;
+
+          p:first-child {
+            margin: 0;
+            font-size: 3em;
+            color: #555;
+          }
+        }
+      }
+
+      .activity-block:hover {
+        background: #eee;
+      }
+    }
+
+    .bttn-section {
+      text-align: right;
+      background: #eee;
+      border-top: 1px solid #ddd;
+      padding: 3.75em;
+
+      button {
+        margin-left: 0.5em;
+        outline: none;
+        border: 0;
+        background: #fff;
+        color: #555;
+        padding: 0.65em 1em;
+        border-radius: 5px;
+        font-size: 1.75em;
+        box-shadow: 0 3px 0 #ddd;
+        letter-spacing: 1px;
+      }
+    }
+
+
   }
 }
 
@@ -1218,4 +1376,73 @@ body {
     .boxes();
   }
   .search-blocks();
+
+  .friend-profile{
+    .profile-block {
+      background: #f06060;
+      text-align: center;
+      box-shadow: 0 3px 0 #d7e4ed;
+      border-radius: 2px;
+      margin: 0.5em;
+      margin-bottom: 1em;
+      color: #fff;
+
+      .profile-icon {
+        margin-top: 4em;
+        .iconwraper();
+        color: #999;
+      }
+
+      .profile-label {
+
+        p:first-child {
+          letter-spacing: 1px;
+          margin: 0;
+          font-size: 2.5em;
+          padding: 1em 1em 0 1em;
+        }
+
+        p:nth-child(2) {
+          font-family: gothamr;
+          margin: 0;
+          padding: 0 1em 1.5em 1em;
+          color: #ddd;
+          font-size: 1.75em;
+        }
+      }
+
+      .profile-stats {
+        background: #fff;
+        color: #555;
+
+        div {
+          margin: 0;
+          padding: 0;
+
+          div {
+            border-right: 1px solid #ddd;
+            text-align: center;
+            margin: 0;
+            padding: 1em 0;
+
+            p:first-child {
+              letter-spacing: 1px;
+              margin: 0;
+              font-size: 1.75em;
+              padding: 1em 1em 0 1em;
+              color: #ccc;
+            }
+
+            p:nth-child(2) {
+              font-family: "Quicksand";
+              margin: 0;
+              font-size: 3.5em;
+              color: #999;
+            }
+          }
+        }
+      }
+    }
+  }
 }
+

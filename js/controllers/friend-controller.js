@@ -37,7 +37,17 @@ app.controller('friends-Controller', [ '$scope', '$location', 'authService', 'fr
 
 }]);
 
-app.controller('friend-Controller', [ '$scope', 'authService', 'friendService', function ($scope, authService, friendService) {
+app.controller('friend-Controller', [ '$scope', '$routeParams', 'authService', 'friendService', function ($scope, $routeParams, authService, friendService) {
 
+    $scope.currentfriend = $routeParams.friendId;
+    $scope.containsObject = function(members) {
+        for(var i=0; i<members.length; i++){
+            if(members[i].emailId == $scope.currentfriend){
+                console.log(members[i].emailId);
+                return true;
+            }
+        }
+        return false;
+    }
 
 }]);

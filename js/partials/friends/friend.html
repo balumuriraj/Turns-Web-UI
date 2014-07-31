@@ -2,20 +2,45 @@
     <div ng-controller="friend-Controller" class="wrap">
         <div class="container-fluid friend-page">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="friend-container">
-                        <div class="item-block" ng-repeat="group in userdetails.groups | filter:searchfriend">
+                        <div class="item-block" ng-repeat="group in userdetails.groups | filter:searchgroup" ng-if="containsObject(group.members)">
                             <div><p style="background: #f06060"><span class="icon-user2"></span></p></div>
                             <div class="box-label">
-                                <p>{{friend.name | truncate:15}}</p>
-                                <p>{{friend.email | truncate:15}}</p>
+                                <p>{{group.name | truncate:15}}</p>
+                                <p>{{group.members.length}} members</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
+                    <div class="friend-profile">
+                        <div class="profile-block">
+                            <div class="profile-icon"><p style="background: #555"><span class="icon-user2"></span></p></div>
+                            <div class="profile-label">
+                                <p>{{currentfriend.name | truncate:15}}</p>
+                                <p>{{currentfriend.email | truncate:15}}</p>
+                            </div>
+                            <div class="profile-stats">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p>Completed</p>
+                                        <p>5</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p>inadvance</p>
+                                        <p>2</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p>remaining</p>
+                                        <p>0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="search-container">
-                        <input type="text" ng-model="searchfriend" placeholder="search... "/>
+                        <input type="text" ng-model="searchgroup" placeholder="search... "/>
                     </div>
 
                 </div>

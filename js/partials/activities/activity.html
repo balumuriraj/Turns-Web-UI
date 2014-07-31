@@ -1,10 +1,45 @@
 <section class="ngview-section" ng-show="userloggedin.value">
     <div ng-controller="activity-Controller" class="wrap">
+
+        <div class="add-turn-container" id="add-turn-container">
+            <div class="modal-menu">
+                <div><span class="icon-plus"></span></div>
+                <div><span class="icon-user3"></span></div>
+                <div><span class="icon-rocket3"></span></div>
+            </div>
+            <div class="modal-main-section">
+                <div class="main-block">
+                    <div class="member-block">
+                        <span class="icon-user3"></span>
+                        <div>
+                            <p>{{userdetails.name}}</p>
+                            <p>{{userdetails.email}}</p>
+                        </div>
+                    </div>
+                    <div class="activity-block">
+                        <span class="icon-rocket3"></span>
+                        <div>
+                            <p>Activity</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bttn-section">
+                    <button>Add Turn</button>
+                    <button>Cancel</button>
+                </div>
+            </div>
+        </div>
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-8 col-lg-9">
                     <section class="ds-timeline-container">
-                        <div class="notifications-title">Feed</div>
+                        <div class="notifications-title clearfix">
+                            <p>Feed</p>
+                            <button onclick="openaddturn()">Add Turn</button>
+                        </div>
+
                         <div id="ds-timeline" class="clearfix">
                             <div class="timelineBar"></div>
                             <div class="ds-timeline-block clearfix" ng-repeat="feed in feeds.log">
@@ -72,6 +107,20 @@
     function hidebutton(obj) {
         $(obj).children("div").css({
             'top': '-15em'
+        });
+    }
+
+    function openaddturn() {
+        var turn = $('#add-turn-container');
+        var background = $('#background-cover');
+
+        turn.css({
+            'top': '0'
+        });
+
+        background.css({
+            'z-index': '9999',
+            'opacity': '0.75'
         });
     }
 </script>

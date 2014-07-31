@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="all-activities-container">
-                        <div class="item-block" ng-repeat="activity in activities | filter:searchactivity">
-                            <div><p style="background: #f06060"><span class="icon-rocket3"></span></p></div>
+                        <div class="item-block" ng-repeat="activity in userdetails.groups | filter:searchactivity" ng-click="openactivity(activity.id)">
+                            <div><p style="background: {{activity.color}}"><span class="{{activity.icon}}"></span></p></div>
                             <div class="box-label">
                                 <p>{{activity.name | truncate}}</p>
                                 <p>

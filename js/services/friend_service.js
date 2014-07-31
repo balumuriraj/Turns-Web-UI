@@ -6,7 +6,7 @@
 
 "use strict";
 
-app.factory('friendService', ['$http', '$cookieStore', 'Base64', function ($http, $cookieStore, Base64) {
+app.factory('friendService', ['$http', '$cookieStore', function ($http, $cookieStore) {
 
     var baseUrl = 'http://localhost:8080/Turns-API';
 
