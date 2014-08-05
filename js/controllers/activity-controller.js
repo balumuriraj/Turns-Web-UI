@@ -53,14 +53,31 @@ app.controller('activities-Controller', [ '$scope', function ($scope) {
 app.controller('activity-Controller', [ '$scope', '$routeParams', 'activityService', function ($scope, $routeParams,activityService) {
 
     var activityId = $routeParams.activityId;
-    $scope.test = activityId;
 
     $scope.init = function () {
+
+        $scope.turn = {
+            'username': $scope.userdetails.name,
+            'useremail': $scope.userdetails.email,
+            'useractivity': '',
+            'useractivityicon': ''
+        };
+
+        for(var i=0; i<$scope.userdetails.groups.length; i++)
+        {
+            if($scope.userdetails.groups[i].id == activityId) {
+                $scope.turn.useractivity = $scope.userdetails.groups[i].name;
+                $scope.turn.useractivityicon = $scope.userdetails.groups[i].icon;
+            }
+        }
+
         console.log("Calling Group id: " + activityId);
         activityService.getActivityLog(activityId)
             .success(function(responseData) {
                 console.log("Success.............................");
+                $scope.currentactivity = responseData;
             });
+
     };
 
     $scope.init();

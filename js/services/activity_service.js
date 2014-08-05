@@ -35,19 +35,19 @@ app.factory('activityService', ['$http', '$cookieStore', function ($http, $cooki
         getActivityLog: function(activityId){
 
             var encodedcreds = $cookieStore.get('creds');
+            var startdate = new Date();
             var currentdate = new Date();
-            var enddate = new Date();
-            enddate.setDate(currentdate.getDate()+10);
+            startdate.setDate(startdate.getDate()-10);
 
+            var starttime = startdate.getTime();
             var currenttime = currentdate.getTime();
-            var endtime = enddate.getTime();
 
-            console.log("calling... "+ activityId+'/'+currenttime+'/'+endtime)
+            console.log("calling... "+ activityId+'/'+starttime+'/'+currenttime)
             $http.defaults.headers.common['Authorization'] = 'Basic ' + encodedcreds;
 
             return $http({
                 headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-                url: baseUrl + '/rest/log/'+activityId+'/'+currenttime+'/'+endtime,
+                url: baseUrl + '/rest/log/'+activityId+'/'+starttime+'/'+currenttime,
                 method: "GET"
             })
                 .success(function(responseData) {
