@@ -1,6 +1,5 @@
 <section class="ngview-section" ng-show="userloggedin.value">
     <div ng-controller="activity-Controller" class="wrap">
-
         <div class="add-turn-container" id="add-turn-container">
             <div class="modal-main-section">
                 <div class="title-block">
@@ -12,22 +11,26 @@
                     <div class="member-block" onclick="showmemberlist()">
                         <span class="icon-user3"></span>
                         <div>
-                            <p>{{turn.username}}</p>
-                            <p>{{turn.useremail}}</p>
+                            <p>{{userinfo.name}}</p>
+                            <p>{{userinfo.email}}</p>
                         </div>
                     </div>
-                    <div class="activity-block">
-                        <span ng-class="turn.useractivityicon"></span>
+                    <div class="activity-block" onclick="showactivitylist()">
+                        <span ng-class="currentactivity.icon"></span>
                         <div>
-                            <p>{{turn.useractivity}}</p>
+                            <p>{{currentactivity.name}}</p>
                         </div>
                     </div>
 
                 </div>
 
+                <div ng-show="inputerror" class="service-error">Something went wrong! Please Try again..</div>
+
                 <div class="bttn-section">
-                    <div>Submit</div>
-                    <div  onclick="closeaddturn()">Cancel</div>
+                    <div class="submit-bttn" ng-hide="loading" ng-click="submitturn()">Submit</div>
+                    <div class="submiting-bttn" ng-show="loading"><i class="fa fa-spinner fa-spin"></i> Submiting...</div>
+                    <div class="cancel-bttn" ng-hide="loading" onclick="closeaddturn()">Cancel</div>
+                    <div class="submit-bttn" ng-show="loading">cannot cancel</div>
                 </div>
             </div>
         </div>
@@ -39,7 +42,7 @@
                     <p class="close-modal" onclick="closememberlist()"><span class="icon-x"></span> </p>
                 </div>
                 <div class="main-block">
-                    <div class="member-block" ng-repeat="mem in currentactivity[0].group.members">
+                    <div class="member-block" ng-repeat="mem in currentactivity.members"  ng-click="selectmember(mem)">
                         <span class="icon-user3"></span>
                         <div>
                             <p>{{mem.name}}</p>
@@ -54,10 +57,10 @@
             <div class="modal-main-section">
                 <div class="title-block">
                     <p class="title-text">Which Activity?</p>
-                    <p class="close-modal" onclick="closeaddturn()"><span class="icon-x"></span> </p>
+                    <p class="close-modal" onclick="closeactivitylist()"><span class="icon-x"></span> </p>
                 </div>
                 <div class="main-block">
-                    <div class="activity-block" ng-repeat="act in userdetails.groups">
+                    <div class="activity-block" ng-repeat="act in mainuser.activities" ng-click="selectactivity(act)">
                         <span ng-class="act.icon" ng-style="{'background': act.color}"></span>
                         <div>
                             <p>{{act.name}}</p>
@@ -70,37 +73,42 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-md-8 col-lg-9">
-                    <section class="ds-timeline-container">
-                        <div class="notifications-title clearfix">
-                            <p>Feed</p>
-                            <button onclick="openaddturn()"><span class="icon-plus"></span> Add Turn</button>
+                <div class="col-sm-12 col-md-7 col-lg-8">
+                    <section class="feed-container">
+                        <div class="activity-feed-title clearfix">
+                            <p><input type="text" ng-model="searchlog" placeholder="search... "/></p>
+                            <button onclick="openaddturn()">Add Turn</button>
                         </div>
-
-                        <div id="ds-timeline" class="clearfix">
-                            <div class="timelineBar"></div>
-                            <div class="ds-timeline-block clearfix" ng-repeat="feed in feeds.log">
-                                <div class="ds-timeline-content" onmouseover="showbutton(this)" onmouseout="hidebutton(this)">
-                                    <p>{{feed.name}}</p>
-                                    <p>has completed this activity at {{feed.date | date: 'HH:mm'}}</p>
-                                    <div class="accept-turn" id="accept-turn">
-                                        <button><span class="icon-pencil"></span> Edit Turn</button>
-                                        <button><span class="icon-x"></span> Delete Turn</button>
+                        <div class="feed-content-section">
+                            <div class="feed-block" ng-repeat="log in logs | orderBy: 'timeStamp':true | filter:searchlog">
+                                <div class="date-block">
+                                    <div class="date-section">
+                                        <p>{{log.timeStamp | date: 'dd'}}</p>
+                                        <p>{{log.timeStamp | date: 'MMM | yyyy'}}</p>
                                     </div>
                                 </div>
-                                <div class="ds-timeline-date">
-                                    <p>{{feed.date | date: 'dd MMM, yyyy'}}</p>
+                                <div class="log-block">
+                                    <div class="usericon-section">
+                                        <p><span class="icon-user3"></span> </p>
+                                    </div>
+                                    <div class="name-section">
+                                        <p>{{log.member.name}}</p>
+                                        <p>has completed this activity at {{log.timeStamp | date: 'HH:mm'}}</p>
+                                    </div>
+
                                 </div>
-                                <div class="ds-timeline-icon">
-                                    <p style="background: #{{feeds.color}}"><span class="icon-{{feeds.icon}}"></span>
-                                    </p>
+                                <div class="action-section">
+                                    <p><span class="icon-pencil"></span> </p>
+                                    <p ng-hide="deleteloading" ng-click="deleteturn(log.id)"><span class="icon-x"></span> </p>
+                                    <p ng-show="deleteloading"><i class="fa fa-spinner fa-spin"></i> </p>
                                 </div>
                             </div>
                         </div>
                     </section>
+
                 </div>
 
-                <div class="col-sm-12 col-md-4 col-lg-3">
+                <div class="col-sm-12 col-md-5 col-lg-4">
                     <section class="members-container">
                         <div class="member-title clearfix">
                             <p><span class="icon-users"></span> Members</p>
@@ -132,7 +140,7 @@
     $('#friends').removeClass("side-menu-active");
     $('#settings').removeClass("side-menu-active");
 
-    document.getElementById("page-title").innerHTML = "Activity/{{feeds.name}}";
+    document.getElementById("page-title").innerHTML = "Activity";
     $('#activities-menu').hide();
 
     function showbutton(obj) {
@@ -147,48 +155,53 @@
         });
     }
 
-    function openaddturn() {
-        var turn = $('#add-turn-container');
+    function backgroundcoveropen() {
         var background = $('#background-cover');
-
-        turn.css({
-            'visibility': 'visible',
-            'top': '50%',
-            'opacity': '1'
-        });
-
         background.css({
             'visibility': 'visible',
             'opacity': '0.75'
         });
     }
 
-    function closeaddturn() {
-        var turn = $('#add-turn-container');
+    function backgroundcoverclose() {
         var background = $('#background-cover');
-
-        turn.css({
-            'visibility': 'hidden',
-            'top': '45%',
-            'opacity': '0'
-        });
-
         background.css({
             'visibility': 'hidden',
             'opacity': '0'
         });
     }
 
-    function showmemberlist() {
+    function addturncontaineropen() {
         var turn = $('#add-turn-container');
-        var members = $('#list-friends-section');
+        turn.css({
+            'visibility': 'visible',
+            'top': '50%',
+            'opacity': '1'
+        });
+    }
 
+    function addturncontainerclose() {
+        var turn = $('#add-turn-container');
         turn.css({
             'visibility': 'hidden',
             'top': '45%',
             'opacity': '0'
         });
+    }
 
+    function openaddturn() {
+        addturncontaineropen();
+        backgroundcoveropen();
+    }
+
+    function closeaddturn() {
+        addturncontainerclose();
+        backgroundcoverclose();
+    }
+
+    function showmemberlist() {
+        addturncontainerclose();
+        var members = $('#list-friends-section');
         members.css({
             'visibility': 'visible',
             'top': '50%',
@@ -197,15 +210,28 @@
     }
 
     function closememberlist() {
-        var turn = $('#add-turn-container');
+        addturncontaineropen();
         var members = $('#list-friends-section');
+        members.css({
+            'visibility': 'hidden',
+            'top': '45%',
+            'opacity': '0'
+        });
+    }
 
-        turn.css({
+    function showactivitylist() {
+        addturncontainerclose();
+        var members = $('#list-activities-section');
+        members.css({
             'visibility': 'visible',
             'top': '50%',
             'opacity': '1'
         });
+    }
 
+    function closeactivitylist() {
+        addturncontaineropen();
+        var members = $('#list-activities-section');
         members.css({
             'visibility': 'hidden',
             'top': '45%',

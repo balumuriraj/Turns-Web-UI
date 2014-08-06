@@ -50,109 +50,108 @@ app.controller('activities-Controller', [ '$scope', function ($scope) {
 
 }]);
 
-app.controller('activity-Controller', [ '$scope', '$routeParams', 'activityService', function ($scope, $routeParams,activityService) {
+app.controller('activity-Controller', [ '$scope', '$routeParams', '$filter', 'activityService', 'authService', function ($scope, $routeParams, $filter, activityService, authService) {
 
     var activityId = $routeParams.activityId;
 
+    $scope.loading = false;
+    $scope.inputerror = false;
+    $scope.deleteloading = false;
+
+    $scope.userinfo = {
+        'name': '',
+        'email': ''
+    };
+
+    $scope.mainuser = {
+        'name': '',
+        'email': '',
+        'activities': ''
+    }
+
+    $scope.turn = {
+        'emailId': '',
+        'groupId': activityId
+    };
+
     $scope.init = function () {
 
-        $scope.turn = {
-            'username': $scope.userdetails.name,
-            'useremail': $scope.userdetails.email,
-            'useractivity': '',
-            'useractivityicon': ''
-        };
+        console.log("Getting user details...");
+        authService.getUserDetails()
+            .success(function(responseData) {
+                $scope.userinfo.name = responseData.name;
+                $scope.userinfo.email = responseData.email;
 
-        for(var i=0; i<$scope.userdetails.groups.length; i++)
-        {
-            if($scope.userdetails.groups[i].id == activityId) {
-                $scope.turn.useractivity = $scope.userdetails.groups[i].name;
-                $scope.turn.useractivityicon = $scope.userdetails.groups[i].icon;
-            }
-        }
+                $scope.turn.emailId = responseData.email;
+
+                $scope.mainuser.name = responseData.name;
+                $scope.mainuser.email = responseData.email;
+                $scope.mainuser.activities = responseData.groups;
+
+                $scope.currentactivity = $filter('filter')($scope.mainuser.activities, {id: activityId})[0];
+            });
 
         console.log("Calling Group id: " + activityId);
         activityService.getActivityLog(activityId)
             .success(function(responseData) {
                 console.log("Success.............................");
-                $scope.currentactivity = responseData;
+                $scope.logs = responseData;
             });
 
     };
 
     $scope.init();
 
-    $scope.feeds = {
-        'objectID': '123',
-        'name': 'Roomies',
-        'icon': 'rocket3',
-        'color': 'fbc73b',
-        'activity_type': 'daily',
-        'members': [
-            {
-                'name': 'Wayne Rooney',
-                'pic': 'http://img.uefa.com/imgml/TP/players/14/2012/324x324/63891.jpg',
-                'turns_completed': 3
-            },
-            {
-                'name': 'Shinjin Kagawa',
-                'pic': 'http://img.uefa.com/imgml/TP/players/1/2012/324x324/250021739.jpg',
-                'turns_completed': 2
-            },
-            {
-                'name': 'Juan Mata',
-                'pic': 'http://img.uefa.com/imgml/TP/players/9/2013/324x324/104584.jpg',
-                'turns_completed': 2
-            },
-            {
-                'name': 'Robin Van Persie',
-                'pic': 'http://img.uefa.com/imgml/TP/players/1/2014/324x324/53130.jpg',
-                'turns_completed': 1
-            }
-        ],
-        'log': [
-            {
-                'date': '2014-07-07T03:47:29.687Z',
-                'name': 'Wayne Rooney',
-                'status': 'done'
-            },
-            {
-                'date': '2014-07-06T03:47:29.687Z',
-                'name': 'Robin Van Persie',
-                'status': 'done'
-            },
-            {
-                'date': '2014-07-05T03:47:29.687Z',
-                'name': 'Juan Mata',
-                'status': 'done'
-            },
-            {
-                'date': '2014-07-04T03:47:29.687Z',
-                'name': 'Shinjin Kagawa',
-                'status': 'done'
-            },
-            {
-                'date': '2014-07-03T03:47:29.687Z',
-                'name': 'Wayne Rooney',
-                'status': 'done'
-            },
-            {
-                'date': '2014-07-02T03:47:29.687Z',
-                'name': 'Juan Mata',
-                'status': 'done'
-            },
-            {
-                'date': '2014-07-01T03:47:29.687Z',
-                'name': 'Shinjin Kagawa',
-                'status': 'done'
-            },
-            {
-                'date': '2014-06-30T03:47:29.687Z',
-                'name': 'Wayne Rooney',
-                'status': 'done'
-            }
-        ]
-    }
+    $scope.selectmember = function(member) {
+        $scope.userinfo.name = member.name;
+        $scope.userinfo.email = member.emailId;
+        $scope.turn.emailId = member.emailId;
+        closememberlist();
+    };
+
+    $scope.selectactivity = function(activity) {
+        $scope.currentactivity = $filter('filter')($scope.mainuser.activities, {id: activity.id})[0];
+        $scope.userinfo.name = $scope.mainuser.name;
+        $scope.userinfo.email = $scope.mainuser.email;
+        $scope.turn.emailId = $scope.mainuser.email;
+        $scope.turn.groupId = activity.id;
+        closeactivitylist();
+    };
+
+    $scope.submitturn = function () {
+        $scope.loading = true;
+        console.log("Adding turn...");
+        activityService.addTurn($scope)
+            .success(function(responseData) {
+                console.log("Add turn Success.............................");
+                closeaddturn();
+                console.log("Calling Group id: " + activityId);
+                activityService.getActivityLog(activityId)
+                    .success(function(responseData) {
+                        console.log("Success.............................");
+                        $scope.logs = responseData;
+                    });
+            });
+
+    };
+
+    $scope.deleteturn = function(logid) {
+        $scope.deletelog = {'logId': logid};
+        $scope.deleteloading = true;
+
+        console.log("Deleting turn...");
+        activityService.deleteTurn($scope)
+            .success(function(responseData) {
+                console.log("delete turn Success.............................");
+                $scope.deleteloading = false;
+                console.log("Calling Group id: " + activityId);
+                activityService.getActivityLog(activityId)
+                    .success(function(responseData) {
+                        console.log("Success.............................");
+                        $scope.logs = responseData;
+                    });
+            });
+    };
 
 }]);
 

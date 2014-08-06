@@ -32,6 +32,49 @@ app.factory('activityService', ['$http', '$cookieStore', function ($http, $cooki
                 });
         },
 
+        addTurn: function($scope){
+
+            var encodedcreds = $cookieStore.get('creds');
+
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + encodedcreds;
+
+            return $http({
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                url: baseUrl + '/rest/addlog',
+                method: "POST",
+                data: $scope.turn
+            })
+                .success(function(responseData) {
+                    console.log("Turn added : " + responseData.status);
+                    $scope.loading = false;
+                })
+                .error(function(data) {
+                    console.log("Add turn failed : " + data);
+                    $scope.inputerror = true;
+                    $scope.loading = false;
+                });
+        },
+
+        deleteTurn: function($scope){
+
+            var encodedcreds = $cookieStore.get('creds');
+
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + encodedcreds;
+
+            return $http({
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                url: baseUrl + '/rest/deletelog',
+                method: "POST",
+                data: $scope.deletelog
+            })
+                .success(function(responseData) {
+                    console.log("Turn deleted : " + responseData.status);
+                })
+                .error(function(data) {
+                    console.log("delete turn failed : " + data);
+                });
+        },
+
         getActivityLog: function(activityId){
 
             var encodedcreds = $cookieStore.get('creds');
