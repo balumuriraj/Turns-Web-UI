@@ -1112,7 +1112,7 @@ body {
             font-weight: bold;
             font-size: 3em;
             margin-bottom: -5px;
-            color: #ddd;
+            color: #ccc;
           }
 
           p:nth-child(2) {
@@ -1256,96 +1256,95 @@ body {
   }
 }
 
-.members-container{
-  margin: 0;
-  margin-right: 1em;
+.activity-container{
+  background: #fff;
+  .activity-title-block{
+    padding: 2.5em 2em;
+    background: #fff;
+    border-radius: 3px 3px 0 0;
+    border: 1px solid #ddd;
 
-  .member-title {
-    padding: 3em;
-    background: @color-light_red;
-
-    p{
-      margin: 0;
+    div {
+      display: inline-block;
+      vertical-align: middle;
     }
 
-    p:first-child{
-      font-size: 2em;
-      color: #fff;
-      display: inline-block;
-      float: left;
+    div:first-child {
+      span {
+        color: #fff;
+        font-size: 7em;
+      }
     }
 
-    p:nth-child(2){
-      display: inline-block;
-      float: right;
-
-      button {
-        outline: 0;
-        border: none;
-        background: #fff;
-        padding: 0.5em;
-        font-size: 1em;
-        color: @color-light_red;
+    div:nth-child(2){
+      margin-left: 1em;
+      p{
+        margin: 0;
       }
 
-      button:active {
-        position: relative;
-        top: 2px;
+      p:first-child{
+        font-size: 3em;
+        color: #fff;
+      }
+
+      p:nth-child(2){
+        font-size: 1.5em;
+        color: #fff;
       }
     }
   }
 
-  .members-sub-container {
+  .activity-member-block{
+    padding: 1.75em 3em;
     background: #fff;
-    box-shadow: 0 3px 0 #d7e4ed;
-    position: relative;
-    padding: 1em 0;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px dashed #ddd;
 
-    .timelineBar {
-      position: absolute;
-      top: 0;
-      left: 6.5em;
-      height: 100%;
-      width: 4px;
-      background: #d7e4ed;
+    div {
+      display: inline-block;
+      vertical-align: middle;
     }
 
-    .member-block {
-      position: relative;
-      padding: 1em;
-      margin: 2em;
+    div:first-child {
+      padding: 0.5em;
+      background: #eee;
+      span {
+        color: #fff;
+        font-size: 4em;
+      }
+    }
 
-      img{
-        vertical-align: middle;
-        width: 7em;
-        border-radius: 10em;
-        padding: 0.2em;
-        background: #eee;
-        display: inline-block;
-        box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+    div:nth-child(2){
+      margin-left: 2em;
+      p{
+        margin: 0;
       }
 
-      div {
-        vertical-align: middle;
-        display: inline-block;
-        padding: 1em 2em;
-
-        p {
-          vertical-align: middle;
-          margin: 0;
-        }
-
-        p:first-child {
-          font-size: 2em;
-          color: @color-light_red;
-        }
-
-        p:nth-child(2) {
-          color: #999;
-          font-size: 1.5em;
-        }
+      p:first-child{
+        font-size: 2em;
+        color: #999;
       }
 
+      p:nth-child(2){
+        font-size: 1.5em;
+        color: #ddd;
+      }
+    }
+  }
+
+  .activity-add-member-block{
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 3px 0 #d7e4ed;
+
+    p{
+      margin: 0;
+      font-size: 1.5em;
+      padding: 1em 2em;
+      color: #999;
+      letter-spacing: 1px;
     }
   }
 }
