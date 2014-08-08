@@ -98,7 +98,6 @@
 
                                 </div>
                                 <div class="action-section">
-                                    <p><span class="icon-pencil"></span> </p>
                                     <p ng-hide="deleteloading" ng-click="deleteturn(log.id)"><span class="icon-x"></span> </p>
                                     <p ng-show="deleteloading"><i class="fa fa-spinner fa-spin"></i> </p>
                                 </div>
@@ -118,7 +117,7 @@
                             </div>
                         </div>
                         <div class="activity-member-block clearfix" ng-repeat="member in currentactivity.members">
-                            <div><span class="icon-user2"></span></div>
+                            <div><img src="images/svg/avatar.svg" /> </div>
                             <div>
                                 <p>{{member.name}}</p>
                                 <p>{{member.emailId}}</p>
