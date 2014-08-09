@@ -1,6 +1,42 @@
 <section class="ngview-section" ng-show="userloggedin.value">
     <div ng-controller="settings-Controller" class="wrap">
-        <div class="page-title"><h1>In Progress...</h1></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-lg-5">
+                    <section class="profile-section">
+                        <div class="profile-background"></div>
+                        <div class="profile-details">
+                            <div class="profile-icon"><img src="images/svg/avatar.svg" /></div>
+                            <p class="profile-name">MohanRaj Balumuri</p>
+                            <p class="profile-email">mbalumur@asu.edu</p>
+                        </div>
+                    </section>
+                    <section class="counter-block">
+                        <div class="friends-count">
+                            <p>Friends</p>
+                            <p>12</p>
+                        </div>
+                        <div class="activities-count">
+                            <p>Activities</p>
+                            <p>5</p>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-6 col-lg-7">
+                    <section class="profile-list-section">
+                        <p class="section-title">Activities</p>
+                        <br>
+                        <div class="profile-list-block">
+                            <div class="activity-chart"></div>
+                            <div class="activity-details">
+                                <p>Cooking</p>
+                                <p>3 members</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -12,4 +48,23 @@
 
     document.getElementById("page-title").innerHTML = "Settings";
     $('#activities-menu').hide();
+
+    var canvas = d3.select(".activity-chart").append("svg")
+            .attr("width", 500)
+            .attr("width", 500);
+
+    var group = canvas.append("g")
+            .attr("transform", "translate(500, 500");
+
+    var r = 100;
+    var p = Math.PI * 2;
+
+    var arc = d3.svg.arc()
+            .innerRadius(r - 20)
+            .outerRadius(r)
+            .startAngle(0)
+            .endAngle(p);
+
+    group.append("path")
+            .attr("d", arc);
 </script>
