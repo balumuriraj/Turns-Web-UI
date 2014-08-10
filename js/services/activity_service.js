@@ -32,6 +32,51 @@ app.factory('activityService', ['$http', '$cookieStore', function ($http, $cooki
                 });
         },
 
+        addMember: function(activityId, $scope){
+
+            var encodedcreds = $cookieStore.get('creds');
+
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + encodedcreds;
+
+            return $http({
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                url: baseUrl + '/rest/group/addMember/'+ activityId,
+                method: "POST",
+                data: $scope.thismember
+            })
+                .success(function(responseData) {
+                    console.log("Activity member added : " + responseData.status);
+                    $scope.memberloading = false;
+                })
+                .error(function(data) {
+                    console.log("Add activity member failed : " + data);
+                    $scope.inputerror = true;
+                    $scope.memberloading = false;
+                });
+        },
+
+        deleteMemberForGroup: function(id, $scope){
+
+            var encodedcreds = $cookieStore.get('creds');
+
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + encodedcreds;
+
+            return $http({
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                url: baseUrl + '/rest/group/deleteMember/' + id,
+                method: "POST",
+                data: $scope.delmember
+            })
+                .success(function(responseData) {
+                    console.log("Member deleted : " + responseData.status);
+                    $scope.activityloading = false;
+                })
+                .error(function(data) {
+                    console.log("Delete Member failed : " + data);
+                    $scope.activityloading = false;
+                });
+        },
+
         addTurn: function($scope){
 
             var encodedcreds = $cookieStore.get('creds');

@@ -33,6 +33,28 @@ app.factory('friendService', ['$http', '$cookieStore', function ($http, $cookieS
                     $scope.inputerror = true;
                     $scope.loading = false;
                 });
+        },
+
+        deleteFriend: function($scope){
+
+            var encodedcreds = $cookieStore.get('creds');
+
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + encodedcreds;
+
+            return $http({
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                url: baseUrl + '/rest/friend/deleteFriend',
+                method: "POST",
+                data: $scope.delfriend
+            })
+                .success(function(responseData) {
+                    console.log("Friend deleted : " + responseData.status);
+                    $scope.friendloading = false;
+                })
+                .error(function(data) {
+                    console.log("Delete friend failed : " + data);
+                    $scope.friendloading = false;
+                });
         }
     };
 

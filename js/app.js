@@ -64,6 +64,12 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: 'js/partials/settings/settings.html',
                 access: false
             })
+        .when('/profile',
+        {
+            controller: 'profile-Controller',
+            templateUrl: 'js/partials/profile/profile.html',
+            access: false
+        })
         .otherwise({ redirectTo: '/dashboard' });
 })
 

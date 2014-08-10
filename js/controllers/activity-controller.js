@@ -53,42 +53,37 @@ app.controller('activities-Controller', [ '$scope', function ($scope) {
 app.controller('activity-Controller', [ '$scope', '$routeParams', '$filter', 'activityService', 'authService', function ($scope, $routeParams, $filter, activityService, authService) {
 
     var activityId = $routeParams.activityId;
-
-    $scope.loading = false;
-    $scope.inputerror = false;
     $scope.deleteloading = false;
 
-    $scope.userinfo = {
-        'name': '',
-        'email': ''
+    $scope.addmembertoactivity = function () {
+        openaddmember();
+        $scope.inputerror = false;
+        $scope.memberloading = false;
+        $scope.thismember = {name: '', emailId: ''};
+        $scope.addMemberForm.$setPristine();
     };
 
-    $scope.mainuser = {
-        'name': '',
-        'email': '',
-        'activities': ''
-    }
+    // function to submit the form after all validation has occurred
+    $scope.submitForm = function(isValid) {
 
-    $scope.turn = {
-        'emailId': '',
-        'groupId': activityId
+        $scope.memberloading = true;
+        // check to make sure the form is completely valid
+        if (isValid) {
+            activityService.addMember(activityId, $scope)
+                .success(function(responseData) {
+                    closeaddmember();
+                    init();
+                });
+        }
+
     };
 
-    $scope.init = function () {
+    function init() {
 
         console.log("Getting user details...");
         authService.getUserDetails()
             .success(function(responseData) {
-                $scope.userinfo.name = responseData.name;
-                $scope.userinfo.email = responseData.email;
-
-                $scope.turn.emailId = responseData.email;
-
-                $scope.mainuser.name = responseData.name;
-                $scope.mainuser.email = responseData.email;
-                $scope.mainuser.activities = responseData.groups;
-
-                $scope.currentactivity = $filter('filter')($scope.mainuser.activities, {id: activityId})[0];
+                $scope.thisactivity = $filter('filter')(responseData.groups, {id: activityId})[0];
             });
 
         console.log("Calling Group id: " + activityId);
@@ -100,40 +95,7 @@ app.controller('activity-Controller', [ '$scope', '$routeParams', '$filter', 'ac
 
     };
 
-    $scope.init();
-
-    $scope.selectmember = function(member) {
-        $scope.userinfo.name = member.name;
-        $scope.userinfo.email = member.emailId;
-        $scope.turn.emailId = member.emailId;
-        closememberlist();
-    };
-
-    $scope.selectactivity = function(activity) {
-        $scope.currentactivity = $filter('filter')($scope.mainuser.activities, {id: activity.id})[0];
-        $scope.userinfo.name = $scope.mainuser.name;
-        $scope.userinfo.email = $scope.mainuser.email;
-        $scope.turn.emailId = $scope.mainuser.email;
-        $scope.turn.groupId = activity.id;
-        closeactivitylist();
-    };
-
-    $scope.submitturn = function () {
-        $scope.loading = true;
-        console.log("Adding turn...");
-        activityService.addTurn($scope)
-            .success(function(responseData) {
-                console.log("Add turn Success.............................");
-                closeaddturn();
-                console.log("Calling Group id: " + activityId);
-                activityService.getActivityLog(activityId)
-                    .success(function(responseData) {
-                        console.log("Success.............................");
-                        $scope.logs = responseData;
-                    });
-            });
-
-    };
+    init();
 
     $scope.deleteturn = function(logid) {
         $scope.deletelog = {'logId': logid};
@@ -152,7 +114,6 @@ app.controller('activity-Controller', [ '$scope', '$routeParams', '$filter', 'ac
                     });
             });
     };
-
 }]);
 
 app.controller('add-activity-Controller', [ '$scope', 'activityService', 'authService', function ($scope, activityService, authService) {
@@ -218,7 +179,18 @@ app.controller('add-activity-Controller', [ '$scope', 'activityService', 'authSe
 
 }]);
 
-app.controller('all-activities-Controller', [ '$scope', '$location', function ($scope, $location) {
+app.controller('all-activities-Controller', [ '$scope', '$location', 'authService', function ($scope, $location, authService) {
+
+    $scope.useractivities;
+
+    init = function () {
+        authService.getUserDetails()
+            .success(function(responseData) {
+                $scope.useractivities = responseData.groups;
+            });
+    };
+
+    init();
 
     $scope.addactivity = function() {
         $location.path('/activities/addActivity');

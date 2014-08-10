@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="friends-container">
-                        <div class="item-block" ng-repeat="friend in userdetails.friends | filter:searchfriend" ng-click="gotofriend(friend.email);">
+                        <div class="item-block" ng-repeat="friend in userfriends | filter:searchfriend" ng-click="gotofriend(friend.email);">
                             <div><p style="background: #f06060"><span class="icon-user2"></span></p></div>
                             <div class="box-label">
                                 <p>{{friend.name | truncate:15}}</p>

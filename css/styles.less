@@ -238,6 +238,27 @@ body {
         position: relative;
         top: 2px;
       }
+
+      .form-group {
+        input{
+          background: #fff;
+          color: #999;
+          font-size: 2em;
+          padding: 0.5em 1em;
+          border-radius: 3px;
+          width: 100%;
+          border: 0;
+          border-bottom: 1px dashed #999;
+          outline: 0;
+        }
+
+        .login-error{
+          background: #f06060;
+          color: #fff;
+          padding: 0.5em 1em;
+          font-size: 1.25em;
+        }
+      }
     }
 
     .service-error {
@@ -272,6 +293,7 @@ body {
 
       .submiting-bttn {
         background: #b6bece;
+        font-size: 1.5em;
         color: #fff;
         border-radius: 0 0 0 3px;
       }
@@ -845,7 +867,7 @@ body {
 
 .ngview-section{
   position: relative;
-  top: 15em;
+  top: 13em;
   margin-left: 13.6em;
   padding: 0 0 0 1em;
 }
@@ -1118,50 +1140,18 @@ body {
 
 .feed-container {
   .activity-feed-title {
-    background: #ddd;
+    background: #fff;
     border: 1px solid #ddd;
     color: #555;
     padding: 2em 3em;
+    text-align: center;
+    border-radius: 3px 3px 0 0;
 
     p{
-      color: #f06060;
+      color: #777;
+      font-weight: bold;
+      font-size: 3em;
       margin: 0;
-      display: inline-block;
-      margin: 0.5em;
-
-      input {
-        font-family: nexalight;
-        outline: 0;
-        border: none;
-        border-bottom: 1px solid #ddd;
-        font-size: 4em;
-        width: 100%;
-        background: #ddd;
-      }
-
-      input:hover {
-        border-bottom: 1px solid #fff;
-      }
-    }
-    button {
-      float: right;
-      display: inline-block;
-      vertical-align: middle;
-      .common-bttn();
-      font-size: 2em;
-      border: 1px solid #ddd;
-      border-radius: 3px;
-      background: #fff;
-    }
-
-    button:hover {
-      background: #eee;
-      color: #999;
-    }
-
-    button:active {
-      position: relative;
-      top: 2px;
     }
   }
 
@@ -1358,10 +1348,12 @@ body {
     }
 
     div:first-child {
-      padding: 0.5em 1em;
+      padding: 0.5em;
       background: #eee;
-      img {
-        width: 3em;
+
+      span {
+        font-size: 4em;
+        color: #ccc;
       }
     }
 
@@ -1373,12 +1365,12 @@ body {
 
       p:first-child{
         font-size: 2em;
-        color: #999;
+        color: #777;
       }
 
       p:nth-child(2){
         font-size: 1.5em;
-        color: #ddd;
+        color: #aaa;
       }
     }
   }
@@ -1389,14 +1381,30 @@ body {
     border-radius: 0 0 3px 3px;
     box-shadow: 0 3px 0 #d7e4ed;
 
-    p{
-      margin: 0;
+    button{
+      margin: 1em 2em;
+      border: 0;
+      outline: none;
       font-size: 1.5em;
-      padding: 1em 2em;
-      color: #999;
+      padding: 0.5em;
+      background: #fff;
+      color: #777;
       letter-spacing: 1px;
     }
+
+    button:hover{
+      text-decoration: underline;
+    }
+
+    button:active{
+      position: relative;
+      top: 2px;
+    }
   }
+}
+
+.add-member-container {
+  .mymodal();
 }
 
 /**** Add Turn Modal ****/
@@ -1935,16 +1943,15 @@ body {
   }
 
   .profile-list-block {
+    position: relative;
     background: #fff;
     box-shadow: 0 3px 0 #d7e4ed;
-    padding: 2em;
+    padding: 2em 3em;
     border-radius: 3px;
-
-    .activity-chart {
-      display: inline-block;
-      vertical-align: middle;
-      font-size: 5em;
-    }
+    overflow: hidden;
+    width: 48.65%;
+    float: left;
+    margin: 0 1em 1em 0;
 
     .activity-details{
       display: inline-block;
@@ -1955,12 +1962,101 @@ body {
       }
 
       p:first-child {
-        font-size: 2em;
+        font-size: 3em;
+        font-weight: bold;
+        color: #333;
       }
 
       p:nth-child(2) {
         font-size: 1.5em;
+        color: #aaa;
+      }
+
+      p:nth-child(3) {
+        position: absolute;
+        right: 0.25em;
+        top: 0em;
+        font-size: 15em;
+        color: rgba(0,0,0,0.1);
+        -webkit-transform: rotate(30deg);
+        -moz-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+        transform: rotate(30deg);
       }
     }
   }
+}
+
+/**** Settings *****/
+
+.settings-list-section{
+  width: 100%;
+
+  .section-title{
+    margin: 0;
+    font-size: 5em;
+    font-weight: bold;
+    color: #777;
+    opacity: 0.5;
+  }
+
+  .settings-list-block{
+    position: relative;
+    background: #fff;
+    border-bottom: 1px dashed #ddd;
+    padding: 2em 3em;
+    border-radius: 3px;
+    width: 100%;
+
+    .settings-details{
+      display: inline-block;
+      vertical-align: middle;
+
+      p{
+        margin: 0;
+      }
+
+      p:first-child {
+        font-size: 2em;
+        font-weight: bold;
+        color: #333;
+      }
+
+      button {
+        display: none;
+        position: absolute;
+        right: 2em;
+        top: 1.75em;
+        color: #fff;
+        background: #f06060;
+        float: right;
+        outline: 0;
+        border: 0;
+        font-size: 1.5em;
+        padding: 0.5em;
+        border-radius: 3px;
+      }
+
+      button:hover{
+        opacity: 0.9;
+      }
+
+      button:active{
+        background: #ec3131;
+      }
+
+      p:nth-child(2) {
+        font-size: 1.25em;
+        color: #aaa;
+      }
+    }
+  }
+
+  .settings-list-block:hover{
+    background: #f8f8f8;
+    button{
+      display: block;
+    }
+  }
+
 }

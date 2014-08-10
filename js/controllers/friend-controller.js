@@ -7,6 +7,8 @@ app.controller('friends-Controller', [ '$scope', '$location', 'authService', 'fr
     $scope.loading = false;
     $scope.inputerror = false;
     $scope.friend = {name: '', emailId: ''};
+    $scope.userfriends;
+
     // function to submit the form after all validation has occurred
     $scope.submitForm = function(isValid) {
 
@@ -18,10 +20,7 @@ app.controller('friends-Controller', [ '$scope', '$location', 'authService', 'fr
                     $scope.addfriendForm.$setPristine();
                     authService.getUserDetails()
                         .success(function(responseData) {
-                            $scope.userdetails.name = responseData.name;
-                            $scope.userdetails.email = responseData.email;
-                            $scope.userdetails.friends = responseData.friends;
-                            $scope.userdetails.groups = responseData.groups;
+                            $scope.userfriends = responseData.friends;
                         });
                     $('#addfriend-container').toggle();
                 });
@@ -35,19 +34,50 @@ app.controller('friends-Controller', [ '$scope', '$location', 'authService', 'fr
        $location.path('/friends/'+email);
     };
 
+    init = function () {
+        authService.getUserDetails()
+            .success(function(responseData) {
+                $scope.userfriends = responseData.friends;
+            });
+    };
+
+    init();
+
 }]);
 
 app.controller('friend-Controller', [ '$scope', '$routeParams', 'authService', 'friendService', function ($scope, $routeParams, authService, friendService) {
 
-    $scope.currentfriend = $routeParams.friendId;
-    $scope.containsObject = function(members) {
-        for(var i=0; i<members.length; i++){
-            if(members[i].emailId == $scope.currentfriend){
-                console.log(members[i].emailId);
-                return true;
-            }
-        }
-        return false;
-    }
+    var currentfriendId = $routeParams.friendId;
 
+    $scope.userfriend;
+    $scope.useractivities;
+    $scope.turncounter = 0;
+    $scope.friendactivities = [];
+
+    init = function () {
+        authService.getUserDetails()
+            .success(function(responseData) {
+                $scope.userfriends = responseData.friends;
+
+                for(var i=0; i<$scope.userfriends.length; i++){
+                    if($scope.userfriends[i].email == currentfriendId){
+                        $scope.userfriend = $scope.userfriends[i];
+                        break;
+                    }
+                }
+
+                $scope.useractivities = responseData.groups;
+
+                for(var i=0; i<$scope.useractivities.length; i++){
+                    for(var j=0; j<$scope.useractivities[i].members.length; j++) {
+                        if ($scope.useractivities[i].members[j].emailId == currentfriendId) {
+                            $scope.turncounter = $scope.turncounter + $scope.useractivities[i].members[j].count;
+                            $scope.friendactivities.push($scope.useractivities[i]);
+                        }
+                    }
+                }
+            });
+    };
+
+    init();
 }]);

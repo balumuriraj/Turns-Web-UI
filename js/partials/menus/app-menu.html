@@ -17,7 +17,7 @@
                     <div><span class="icon-angle-down"></span></div>
                 </a>
 
-                <button class="clearfix"><i class="fa fa-plus"></i> Add Turn</button>
+                <button class="clearfix" ng-click="addturn()"><i class="fa fa-plus"></i> Add Turn</button>
 
             </div>
         </div>
@@ -26,7 +26,7 @@
 
 <div class="account-dropdown-menu" id="dropdownmenu">
     <ul>
-        <li><a href="" class="menu-item"><span class="icon-user2"></span> <p>Profile</p></a></li>
+        <li><a href="#/profile" class="menu-item"><span class="icon-user2"></span> <p>Profile</p></a></li>
         <li><a href="" class="menu-item" ng-click="signout()"><span class="icon-sign-out"></span> <p>Sign out</p></a></li>
     </ul>
 </div>
@@ -57,27 +57,6 @@
                 <a href="#/settings">
                     <div><img src="images/svg/settings-gear.svg" /></div>
                     <p>Settings</p>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
-<div class="side-submenu-container" ng-controller="main-Controller" id="activities-menu">
-    <nav class="side-submenu">
-        <ul>
-            <li ng-repeat="activity in activities">
-                <a href="#/activities/{{activity.objectID}}">
-                    <p><span class="icon-star5"></span> {{activity.name}}</p>
-                </a>
-            </li>
-            <li>
-                <a href="#/activities/allActivities">
-                    <p><span class="icon-rocket3"></span> Show All</p>
-                </a>
-            </li>
-            <li>
-                <a href="#/activities/addActivity">
-                    <p><span class="icon-plus"></span> Add Activity</p>
                 </a>
             </li>
         </ul>
