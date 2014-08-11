@@ -48,7 +48,8 @@
                             <p>Log</p>
                         </div>
                         <div class="feed-content-section">
-                            <div class="feed-block" ng-repeat="log in logs | orderBy: 'timeStamp':true">
+                            <div class="timelineBar"></div>
+                            <div class="feed-block clearfix" ng-repeat="log in logs | orderBy: 'timeStamp':true">
                                 <div class="date-block">
                                     <div class="date-section">
                                         <p>{{log.timeStamp | date: 'dd'}}</p>
@@ -56,19 +57,20 @@
                                     </div>
                                 </div>
 
-                                <div class="log-block">
+                                <div class="feed-icon"><p><span class="icon-rocket3"></span></p></div>
+
+                                <div class="log-block clearfix">
                                     <div class="usericon-section">
                                         <p><span class="icon-user3"></span> </p>
                                     </div>
                                     <div class="name-section">
                                         <p>{{log.member.name}}</p>
                                         <p>has completed this activity at {{log.timeStamp | date: 'HH:mm'}}</p>
+                                        <div class="action-section">
+                                            <p ng-hide="deleteloading" ng-click="deleteturn(log.id)"><span class="icon-x"></span> </p>
+                                            <p ng-show="deleteloading"><i class="fa fa-spinner fa-spin"></i> </p>
+                                        </div>
                                     </div>
-
-                                </div>
-                                <div class="action-section">
-                                    <p ng-hide="deleteloading" ng-click="deleteturn(log.id)"><span class="icon-x"></span> </p>
-                                    <p ng-show="deleteloading"><i class="fa fa-spinner fa-spin"></i> </p>
                                 </div>
                             </div>
                         </div>
@@ -84,6 +86,17 @@
                                 <p>{{thisactivity.name}}</p>
                                 <p>{{thisactivity.members.length}} members</p>
                             </div>
+                            <div>
+                                <span class="icon-cog" onclick="$('.activity-action').toggle()"></span>
+                            </div>
+                        </div>
+                        <div class="activity-action">
+                            <div>
+                                <button ng-click="addmembertoactivity()">Add Member</button>
+                            </div>
+                            <div>
+                                <button onclick="$('.delbuttons').toggle()">Delete Member</button>
+                            </div>
                         </div>
                         <div class="activity-member-block clearfix" ng-repeat="member in thisactivity.members">
                             <div><span class="icon-user2" ></span></div>
@@ -91,9 +104,10 @@
                                 <p>{{member.name}}</p>
                                 <p>{{member.emailId}}</p>
                             </div>
-                        </div>
-                        <div class="activity-add-member-block">
-                            <button ng-click="addmembertoactivity()">Add member to this activity</button>
+                            <div class="delbuttons">
+                                <span ng-hide="deletememberloading" class="icon-x" ng-click="deletememberfromactivity(member)"></span>
+                                <i ng-show="deletememberloading" class="fa fa-spinner fa-spin"></i>
+                            </div>
                         </div>
                     </section>
 
@@ -110,6 +124,9 @@
     $('#settings').removeClass("side-menu-active");
 
     document.getElementById("page-title").innerHTML = "Activity";
+
+    $('.activity-action').hide();
+    $('.delbuttons').hide();
 
     function addmembercontaineropen() {
         var member = $('#add-member-container');

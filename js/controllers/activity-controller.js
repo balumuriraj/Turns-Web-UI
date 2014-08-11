@@ -54,6 +54,7 @@ app.controller('activity-Controller', [ '$scope', '$routeParams', '$filter', 'ac
 
     var activityId = $routeParams.activityId;
     $scope.deleteloading = false;
+    $scope.deletememberloading = false;
 
     $scope.addmembertoactivity = function () {
         openaddmember();
@@ -76,6 +77,19 @@ app.controller('activity-Controller', [ '$scope', '$routeParams', '$filter', 'ac
                 });
         }
 
+    };
+
+    $scope.deletememberfromactivity = function (delmember) {
+        $scope.delmember = delmember;
+        $scope.deletememberloading = true;
+
+        console.log("Deleting.. " + $scope.delmember.name + $scope.delmember.emailId)
+
+        activityService.deleteMemberForGroup(activityId, $scope)
+            .success(function (responseData) {
+                $scope.deletememberloading = false;
+                init();
+            });
     };
 
     function init() {
