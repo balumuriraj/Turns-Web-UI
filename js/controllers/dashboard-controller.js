@@ -4,6 +4,9 @@
 
 app.controller('dashboard-Controller', [ '$scope', function ($scope) {
 
+    var today = new Date();
+    $scope.currentdate = today.getTime();
+
     $scope.notifications = { 'results': [
         {
             'activity': 'Roomies',

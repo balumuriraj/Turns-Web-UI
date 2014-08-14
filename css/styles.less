@@ -562,7 +562,7 @@ body {
 /**** Header ****/
 
 .headbar {
-  background: #fff;
+  background: #222;
   color: #555;
   border-radius: 0;
   width: 100%;
@@ -575,8 +575,8 @@ body {
     color: #fff;
 
     .headbar-logo{
-      width: 13.25em;
-      background: #222;
+      width: 12em;
+      background: #333;
       display: inline-block;
       .logo{
         width: 100%;
@@ -596,14 +596,14 @@ body {
       margin: 0;
       padding: 0 1em;
       vertical-align: middle;
-      color: #999;
+      color: #eee;
     }
 
     .headbar-account{
       float: right;
       text-decoration: none;
-      color: #555;
-      padding: 3.4em;
+      color: #eee;
+      padding: 2.5em;
       vertical-align: middle;
 
       div {
@@ -646,7 +646,7 @@ body {
     }
 
     .headbar-account:hover{
-      background: #eee;
+      background: rgba(0,0,0,0.2);
       text-decoration: none;
     }
 
@@ -657,15 +657,13 @@ body {
       border: none;
       background: #f06060;
       color: #fff;
-      font-size: 1.75em;
-      letter-spacing: 1px;
+      font-size: 1.5em;
       font-weight: bold;
-      padding: 0.5em 1em;
+      padding: 0.75em 1em;
       border-radius: 3px;
-      margin: 2em 0;
-      margin-right: 1em;
+      margin: 2em;
+      margin-right: 2em;
       text-transform: uppercase;
-      box-shadow: 0 3px 0 #ec3232;
 
       i{
         -webkit-transform: rotate(0deg);
@@ -696,7 +694,6 @@ body {
     button:active{
       position: relative;
       top: 2px;
-      box-shadow: 0 3px 0 #f06060;
     }
 
   }
@@ -766,7 +763,7 @@ body {
 
 .side-menu-container{
   position: fixed;
-  top: 12em;
+  top: 10em;
   height: 100%;
   background: #fff;
   text-align: center;
@@ -777,9 +774,9 @@ body {
     padding: 0;
 
     li {
-      width: 13.5em;
-      border-bottom: 1px solid #ddd;
-      padding: 3em;
+      width: 12em;
+      border-bottom: 1px solid #fff;
+      padding: 3em 1em;
 
       a{
         color: #555;
@@ -789,7 +786,7 @@ body {
         div {
 
           img{
-            width: 5em;
+            width: 4em;
           }
 
         }
@@ -817,6 +814,7 @@ body {
 
   .side-menu-active {
     color: #555;
+    background: rgba(0,0,0,0.02);
     border-left: 5px solid #f06060;
   }
 }
@@ -869,43 +867,79 @@ body {
   position: relative;
   top: 13em;
   margin-left: 13.6em;
+  margin-right: 1em;
   padding: 0 0 0 1em;
 }
 
-.dashboard-turn-container{
+.turn-status-container{
+  padding: 0 1em 1em 1em;
+
+  .turn-status{
+    background: #fff;
+    padding: 2em 3em;
+    border-left: 5px solid #f06060;
+    box-shadow: 0 3px 0 #d7e4ed;
+
+    p{
+      margin:0;
+      display:inline-block;
+      opacity: 0.85;
+    }
+
+    p:first-child{
+      font-size: 5em;
+      font-family: 'quicksand';
+    }
+
+    p:nth-child(2){
+      font-size: 1.5em;
+      color: #aaa;
+    }
+  }
+}
+
+.turns-pending-container {
+  padding: 1em;
+  div:first-child{
+    p{
+      margin:0;
+      font-size: 5em;
+      font-weight: bold;
+      color: #aaa;
+      opacity: 0.75;
+    }
+  }
+}
+
+.dashboard-side-container{
   background: #fff;
-  padding: 2em;
+  padding: 2em 0;
   border-radius: 0.25em;
   box-shadow: 0 3px 0 #d7e4ed;
 
-  .dashboard-turn-status{
+  div {
+    width: 49%;
+    display: inline-block;
     margin: 0;
     text-align: center;
 
     p:first-child{
-      font-family: 'Quicksand';
-      font-size: 5em;
+      font-weight: bold;
+      font-size: 7em;
+      color: #ccc;
       margin: 0;
     }
 
     p:nth-child(2){
-      color: #999;
+      color: #555;
       font-size: 1.5em;
       padding-bottom: 1em;
+      letter-spacing: 1px;
       margin: 0;
     }
-
-    .turn-left {
-      color: @color-dark_yellow;
-    }
-
-    .turn-middle {
-      color: @color-light_green;
-    }
-
-    .turn-right {
-      color: @color-light_red;
-    }
+  }
+  div:nth-child(2){
+    border-left: 1px solid #ddd;
   }
 }
 
@@ -913,8 +947,7 @@ body {
   background: @color-light_red;
   color: #fff;
   margin: 0;
-  margin-right: 1em;
-  padding: 0 1em 3em 4em;
+  padding: 0 1em 3em 3em;
 
   p:first-child{
     font-family: 'Quicksand';
@@ -933,12 +966,14 @@ body {
   p:nth-child(3){
     font-size: 3em;
     margin:0;
+    margin-left: 0.5em;
     margin-top: -1em;
   }
 
   p:nth-child(4){
     font-size: 1.75em;
     margin:0;
+    margin-left: 0.75em;
     margin-top: 2em;
   }
 }
@@ -1139,18 +1174,23 @@ body {
 /**** Activity section ****/
 
 .feed-container {
+  padding: 0 2em;
+
   .activity-feed-title {
     padding: 2em 3em;
     text-align: center;
     border-radius: 3px 3px 0 0;
 
     p{
-      color: #222;
+      color: #fff;
       opacity: 0.5;
       font-weight: bold;
       font-size: 3em;
       letter-spacing: 1px;
       margin: 0;
+      background: #999;
+      display:inline-block;
+      padding: 0.5em 2em;
     }
   }
 
@@ -1159,7 +1199,7 @@ body {
 
     .timelineBar {
       position: absolute;
-      top: 0;
+      top: -2em;
       left: 50%;
       height: 100%;
       width: 4px;
@@ -1171,8 +1211,8 @@ body {
 
       .date-block {
         display: inline-block;
-        vertical-align: top;
-        width: 42%;
+        vertical-align: middle;
+        width: 43%;
         float: left;
 
         .date-section{
@@ -1180,21 +1220,10 @@ body {
           p{
             text-align: center;
             margin: 0;
-            font-size: 1.5em;
-            color: #7f8c97;
-            letter-spacing: 1px;
+            font-size: 1.75em;
             opacity: 0.75;
-          }
-
-          p:first-child {
-            font-weight: bold;
-            font-size: 3em;
-            margin-bottom: -5px;
-            color: #999;
-          }
-
-          p:nth-child(2) {
             color: #555;
+            padding-top: 1em;
           }
         }
       }
@@ -1211,7 +1240,7 @@ body {
         box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
 
         p{
-          background: @color-dark_yellow;
+          background: #f06060;
           margin: 0;
           border-radius: 10em;
           padding: 1em;
@@ -1228,8 +1257,8 @@ body {
         display: inline-block;
         position: relative;
         float: right;
-        width: 42%;
-        background: #fff;
+        width: 43%;
+        background:#fff;
         padding: 2em;
         border-radius: 3px;
         box-shadow: 0 3px 0 #d7e4ed;
@@ -1259,7 +1288,7 @@ body {
           }
 
           p:first-child {
-            color: #333;
+            color: #555;
             font-weight: bold;
             font-size: 2em;
           }
@@ -1913,21 +1942,15 @@ body {
 
 /**** All friends page *****/
 
+.add-friend-container {
+  .mymodal();
+}
+
 .friends-page {
   .friends-container{
     .boxes();
   }
   .search-blocks();
-
-  .addfriend-container {
-    background: #fff;
-    padding: 4em 5em;
-    border-radius: 2px;
-    margin: 0.25em 0.5em 2em 0.5em;
-    box-shadow: 0 3px 0 #d7e4ed;
-
-    .innerformlayout();
-  }
 }
 
 /**** Friend page *****/
@@ -2065,6 +2088,7 @@ body {
   width: 100%;
 
   .counter1{
+    cursor: pointer;
     width: 49%;
     display: inline-block;
     margin: 0;
@@ -2092,7 +2116,17 @@ body {
     }
   }
 
+  .counter1:hover {
+    background: #f8f8f8;
+  }
+
+  .counter1:active {
+    position: relative;
+    top: 2px;
+  }
+
   .counter2{
+    cursor: pointer;
     width: 49%;
     display: inline-block;
     float: right;
@@ -2119,6 +2153,15 @@ body {
       font-weight: bold;
     }
   }
+
+  .counter2:hover {
+    background: #f8f8f8;
+  }
+
+  .counter2:active {
+    position: relative;
+    top: 2px;
+  }
 }
 
 .profile-list-section {
@@ -2133,6 +2176,7 @@ body {
   }
 
   .profile-list-block {
+    cursor: pointer;
     position: relative;
     background: #fff;
     box-shadow: 0 3px 0 #d7e4ed;
@@ -2174,6 +2218,15 @@ body {
         transform: rotate(30deg);
       }
     }
+  }
+
+  .profile-list-block:hover {
+    background: #f8f8f8;
+  }
+
+  .profile-list-block:active {
+    position: relative;
+    top: 2px;
   }
 }
 

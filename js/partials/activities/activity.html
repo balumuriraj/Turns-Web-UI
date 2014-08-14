@@ -52,17 +52,14 @@
                             <div class="feed-block clearfix" ng-repeat="log in logs | orderBy: 'timeStamp':true">
                                 <div class="date-block">
                                     <div class="date-section">
-                                        <p>{{log.timeStamp | date: 'dd'}}</p>
-                                        <p>{{log.timeStamp | date: 'MMM | yyyy'}}</p>
+                                        <p><span>{{log.timeStamp | date: 'dd'}}</span> {{log.timeStamp | date: 'MMM, yyyy'}}</p>
                                     </div>
                                 </div>
 
                                 <div class="feed-icon"><p><span class="icon-rocket3"></span></p></div>
 
                                 <div class="log-block clearfix">
-                                    <div class="usericon-section">
-                                        <p><span class="icon-user3"></span> </p>
-                                    </div>
+
                                     <div class="name-section">
                                         <p>{{log.member.name}}</p>
                                         <p>has completed this activity at {{log.timeStamp | date: 'HH:mm'}}</p>

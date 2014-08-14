@@ -2,7 +2,7 @@
  * Created by MohanRaj on 8/9/2014.
  */
 
-app.controller('profile-Controller', [ '$scope', 'authService', function ($scope, authService) {
+app.controller('profile-Controller', [ '$scope', '$location', 'authService', function ($scope, $location, authService) {
 
     $scope.currentuser = {'name':'', 'email':'', 'activities':'', 'friends':''};
 
@@ -13,4 +13,12 @@ app.controller('profile-Controller', [ '$scope', 'authService', function ($scope
             $scope.currentuser.activities = responseData.groups;
             $scope.currentuser.friends = responseData.friends;
         });
+
+    $scope.gotofriendspage = function(){
+        $location.path('/friends');
+    };
+
+    $scope.gotoactivitiespage = function(){
+        $location.path('/activities/allActivities');
+    };
 }]);

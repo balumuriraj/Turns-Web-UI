@@ -4,10 +4,15 @@
 
 app.controller('friends-Controller', [ '$scope', '$location', 'authService', 'friendService', function ($scope, $location, authService, friendService) {
 
-    $scope.loading = false;
-    $scope.inputerror = false;
-    $scope.friend = {name: '', emailId: ''};
     $scope.userfriends;
+
+    $scope.addfriend = function(){
+        openaddfriend();
+        $scope.inputerror = false;
+        $scope.loading = false;
+        $scope.friend = {name: '', emailId: ''};
+        $scope.addfriendForm.$setPristine();
+    };
 
     // function to submit the form after all validation has occurred
     $scope.submitForm = function(isValid) {
@@ -21,8 +26,8 @@ app.controller('friends-Controller', [ '$scope', '$location', 'authService', 'fr
                     authService.getUserDetails()
                         .success(function(responseData) {
                             $scope.userfriends = responseData.friends;
+                            closeaddfriend();
                         });
-                    $('#addfriend-container').toggle();
                 });
             $scope.loading = true;
             $scope.inputerror = false;
